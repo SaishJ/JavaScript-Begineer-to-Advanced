@@ -26,3 +26,19 @@ console.log(box);
 // | let     | Block scope (inside {})     | No                            |
 // | const   | Block scope (inside {})     | No                            |
 // +-----------------------------------------------------------------------+
+
+// Using var keyword (global or functional scope)
+for (var i = 1; i <= 5; i++)
+{
+  console.log("Inside the loop: " +i);
+}
+console.log("Outside the loop: " +i);
+// var i is a global variable. Therefore it can be accessed from both inside and outside the loop.
+
+// Using let keyword (block scope)
+for (let i = 1; i <= 5; i++)
+{
+  console.log("Inside the loop: " +i);
+}
+console.log("Outside the loop: " +i);
+// var i is a block scope. ReferenceError occurs when access the variable outside the block. Therefore it can be accessed only inside the for loop i.e block where it is defined.
