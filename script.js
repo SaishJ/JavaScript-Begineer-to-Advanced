@@ -18,3 +18,11 @@ console.log(box);
 
 // let -> It can be reassigned but its similar to const i.e block scoped.
 //        If variables are not crreated inside a function or block they are globally scoped.
+
+// +-----------------------------------------------------------------------+
+// | Keyword | scope                       | Redeclared (within the scope) |
+// +-----------------------------------------------------------------------+
+// | var     | Global or Functional scope  | Yes                           |
+// | let     | Block scope (inside {})     | No                            |
+// | const   | Block scope (inside {})     | No                            |
+// +-----------------------------------------------------------------------+
