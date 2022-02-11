@@ -21,7 +21,7 @@ console.log(box);
 
 // +-----------------------------------------------------------------------+
 // | Keyword | scope                       | Redeclared (within the scope) |
-// +-----------------------------------------------------------------------+
+// |---------|-----------------------------|-------------------------------|
 // | var     | Global or Functional scope  | Yes                           |
 // | let     | Block scope (inside {})     | No                            |
 // | const   | Block scope (inside {})     | No                            |
