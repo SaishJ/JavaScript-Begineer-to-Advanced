@@ -48,9 +48,7 @@ const doubleQuotes = "Hello!!";
 console.log(doubleQuotes);
 
 // Backticks:
-/* Backticks provide extended functionality. They allow us to embed
-variables and expression into a string by wrapping them into dollar sign
-and then curly braces ${} */
+/* Backticks provide extended functionality. They allow us to embed variables and expression into a string by wrapping them into dollar sign and then curly braces ${} */
 const middleName = "Saish";
 const backticks = `Hello, ${middleName}, welcome!`;
 console.log(backticks);
@@ -70,8 +68,7 @@ let b = 123e-5; // 0.00123
 console.log(a);
 console.log(b);
 
-/* Unlike many other programming languages, JavaScript does not define different types 
-of numbers, like integers, short, long, floating-point etc. */
+/* Unlike many other programming languages, JavaScript does not define different types of numbers, like integers, short, long, floating-point etc. */
 const wholeNumber = 5;
 const decimalNumber = 0.5;
 
@@ -91,11 +88,10 @@ const div = firstNumber / secondNumber;
 console.log(add); //15
 console.log(sub); //-5
 console.log(mul); //50
-console.log(div); //0.5 -> It is turned into a whole number down to to float or decimal number.
+console.log(div); //0.5 -> It is turned into a whole number down to float or decimal number.
 
 // Booleans
-/* Booleans represent a logical entity and can only have two values. It can only be
-true or false. */
+/* Booleans represent a logical entity and can only have two values. It can only be true or false. */
 
 // true - yes, correct, 1 -> in sometimes.
 // false - no, incorrect, 0 -> in sometimes.
@@ -105,10 +101,8 @@ console.log(age > 18); //true
 console.log(age < 18); //false
 
 // Null:
-/* when we assign null to a variable, we are explicitly assigning a "nothing" or "empty" value to
-it. 
-For example, a name variable which stores the name of an user. At first, it doesn't have any data, so assigning to it.
-Later add the data in name variable so we can reassign it. */
+/* when we assign null to a variable, we are explicitly assigning a "nothing" or "empty" value to it. For example, a name variable which stores the name of an user. At first, 
+it doesn't have any data, so assigning to it. Later add the data in name variable so we can reassign it. */
 
 let name = null;
 name = "Saish";
@@ -116,15 +110,13 @@ name = "Saish";
 console.log(name); //Saish
 
 // Undefined:
-/* When we declare a variable without assigning any value to it, its value will be 
-undefined by default. */
+/* When we declare a variable without assigning any value to it, its value will be undefined by default. */
 
 let z; //or let z = undefined.
 console.log(z); //undefined
 
 // Objects
-/* Object is the most important data type and it forms the building block of the JavaScript.
-Objects are used to store collection of data in more complex entities.
+/* Object is the most important data type and it forms the building block of the JavaScript. Objects are used to store collection of data in more complex entities.
 The object can contain any data types of it. It can contain string, numbers, or any other data types. */
 const person = {
   name: "Saish", //String
@@ -140,8 +132,7 @@ console.log(person.age);
 // ▪ Array
 // ▪ Date
 
-/* Array: To store order data collections. In array store multiple primitive types, 
-it don't have key-value pairs, it have indexes. */
+/* Array: To store order data collections. In array store multiple primitive types, it don't have key-value pairs, it have indexes. */
 const arr = [1, 2, 3, 4];
 
 console.log(arr);
