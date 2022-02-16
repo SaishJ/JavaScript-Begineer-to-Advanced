@@ -101,8 +101,8 @@ console.log(age > 18); //true
 console.log(age < 18); //false
 
 // Null:
-/* when we assign null to a variable, we are explicitly assigning a "nothing" or "empty" value to it. For example, a name variable which stores the name of an user. At first, 
-it doesn't have any data, so assigning to it. Later add the data in name variable so we can reassign it. */
+/* when we assign null to a variable, we are explicitly assigning a "nothing" or "empty" value to it. For example, a name variable which stores the name of an user. 
+At first, it doesn't have any data, so assigning to it. Later add the data in name variable so we can reassign it. */
 
 let name = null;
 name = "Saish";
