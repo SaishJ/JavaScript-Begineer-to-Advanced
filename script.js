@@ -76,19 +76,32 @@ console.log(a !== b);
 
 // Strict Equality vs Loose Equality
 /*
-    Strict Equality: The strict equality operator ensure that both oprand are of the same
-                     type and the same value.
+    Strict Equality: The strict equality operator ensure that both oprand are of the same type and the same value.
     
-    Loose Equality: The loose equality operators doesn't care about the type matching, if the
-                    types don't match, it wil convert the type of what we have on the right 
-                    side to match what we have on the left side, and then it will only check 
-                    if the values are equal.
+    Loose Equality: The loose equality operators doesn't care about the type matching, if the types don't match, it wil convert the type of what we have on the right side to 
+                    match what we have on the left side, and then it will only check if the values are equal.
 
     Equality operators returns boolean value. -> true or false
 */
 console.log(1 == "1"); //loose equality -> true
 
 console.log(20 === "20"); //strict equality -> false
+
+// Logical Operator:
+// There are 3 types of logical operator.
+/*
+  1) AND
+  2) OR
+  3) NOT
+*/
+// AND (&&) => All operands are true and if they are is returns true, if they are not returns false.
+console.log(true && false)  //false
+
+// OR (||) => At least one operand is true then it returns true.
+console.log(true || false)  //true
+
+// NOT (!) => Simply converts the boolean true to false and boolean false to be true.
+console.log(!true)  //false
 
 // Assignment Operator:
 /* Assignment operator is = (equal sign) used for assigning values to variable. */
