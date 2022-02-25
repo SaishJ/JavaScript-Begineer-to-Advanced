@@ -1,120 +1,202 @@
-/* Arithmetic Operators: 
-Arithmetic Operators are used to perform mathematical operations between a numeric operands. */
-
-const a = 5;
-const b = 10;
-
-// Addition (+)
-const add = a + b;
-console.log(add);
-
-// Subtraction (-)
-const sub = a - b;
-console.log(sub);
-
-// Multiplication (*)
-const multi = a * b;
-console.log(multi);
-
-// Division (/)
-const div = a / b;
-console.log(div);
-// Note: JavaScript numbers can be float or decimal values as well.
-
-// Exponent (**)
-const expo = b ** a; // also do a ** b;
-console.log(expo);
-
-// Modulus (%)
-const x = 13;
-const y = 12;
-const modu = x % y;
-console.log(modu);
-
-// Increment and Decrement
-let i = 0;
-i++; //Increment
-i--; //Decrement
-console.log(i);
-
-/* Comparision Operator:
-Comparision Operator compare two values and returned to boolean values
-true or false. 
-All Comparision and Equality operator returns boolean values. */
-const num1 = 5;
-const num2 = 10;
-
-// Greater than
-console.log(a > b);
-
-//Greater than equal to
-console.log(a >= b);
-
-// Less than
-console.log(a < b);
-
-// Less than equal to
-console.log(a <= b);
-
-/* Remember: One Equal sign -> when assign a variable.
-             Two Equal sign -> when check whether a value is equal or not. */
-
-/* Equality Operators:
-Test whether a value is equal or not */
-
-// Is equal
-console.log(a == b);
-
-// Not equal
-console.log(a != b);
-
-// Strict equality
-console.log(a === b);
-
-// Strict Inequality
-console.log(a !== b);
-
-// Strict Equality vs Loose Equality
+// Logic and Control Flow
 /*
-    Strict Equality: The strict equality operator ensure that both oprand are of the same
-                     type and the same value.
-    
-    Loose Equality: The loose equality operators doesn't care about the type matching, if the
-                    types don't match, it wil convert the type of what we have on the right 
-                    side to match what we have on the left side, and then it will only check 
-                    if the values are equal.
-
-    Equality operators returns boolean value. -> true or false
+    ▪ IF statement
+    ▪ Truthy and Falsy
+    ▪ Switch statement
+    ▪ Ternary operator
 */
-console.log(1 == "1"); //loose equality -> true
 
-console.log(20 === "20"); //strict equality -> false
+// IF statement
+/* Use if statement to specify a block of code to be executed, if a specified condition is true.
+Syntax: if (condition) {
+            code to be executed if the condition is true
+        } 
+*/
+/* const age = 24;
+if (age > 18) {
+  console.log("Age is greater than 18.");
+} */
 
-// Assignment Operator:
-/* Assignment operator is = (equal sign) used for assigning values to variable. */
+// Else statement
+/* Use else statement to specify a block of code to be executed if the condition is false.
+Syntax: if (condition) {
+            code to be executed if the condition is true
+        } else {
+            code to be executed if the condiyion is false
+        } 
+*/
+const temprature = 30;
+if (temprature > 28) {
+  console.log("Sunny");
+} else {
+  console.log("Overcast");
+}
 
-const num = 5;
+// If - else if - else statement
+/* Use else if statement to specify a new condition to test, if the first condition is false
+Syntax: if (condition1) {
+            code to be executed if the condition is true
+        } else if (condition2) {
+            code to be executed if the condition1 is false 
+            and condition2 is true
+        } else {
+            code to be executed if the 
+            condition1 is false and
+            condition2 is false
+        } 
+*/
+const weather = 18;
+if (weather > 25) {
+  console.log("Sunny");
+} else if (weather > 22) {
+  console.log("Overcast");
+} else {
+  console.log("Cold");
+}
 
-/* Also Join the assignment operators with one of the arithmetic operators. */
+// Truthy and Falsy
+/* 
+Truthy expression always evaluate to boolean true and falsy evaluate to boolean false.
 
-// The += assignment operator adds a value to a variable.
-let number = 5;
-// number += 5;
-// console.log(number); //10
+When a value is evaluated in a boolean context, if the value is true it is called a truthy and if it is
+false it is called a falsy.
+There are 6 falsy values:
+false
+0 (zero)
+"", '', `` (empty strings)
+null
+undefined
+NaN (Not a number)
 
-// The -= assignment operator subtracts a value from a variable.
-// number -= 5;
-// console.log(number);    //0
+Truthy:
+Everything that is not falsy is truthy. */
 
-// The *= assignment operator multiply a variable.
-// number *= 5;
-// console.log(number);    //25
+if (5) {
+  console.log("Truthy");
+} else {
+  console.log("Falsy");
+}
+// Output -> Truthy
 
-// The /= assignment divides a value.
-// number /= 5;
-// console.log(number);    //1
+// Logical Operators
+/* Logical operators are used to combine two or more condition. JavaScript includes three logical operators
+1) OR (||)
+2) AND (&&)
+3) NOT (!)
+Logical operators are often used as a condition and if statements. */
+// AND operator example:
+// Example of PUB
 
-// The addition assignment += can also be used with string.
-let string = "Hello";
-string += ", I am Saish";
-console.log(string);
+// isCool and is above the age of 18
+const age = 19;
+const isCool = true;
+
+if (isCool && age > 18) {
+  console.log("You may enter!");
+} else {
+  console.log("You cannot enter.");
+}
+
+// OR operator example:
+const day = "sunday";
+
+if (day === "saturday" || day === "sunday") {
+  console.log("Enjoy the weekend.");
+} else {
+  console.log("Do some work");
+}
+
+// NOT operator example:
+console.log(!true); //false
+
+console.log(!false); //true
+
+// Switch statement
+/* The switch statement is used to perform different actions based on 
+different conditions.
+Syntax: switch(expression) {
+          case x:
+            code block
+            break;
+          case y:
+            code block
+            break;
+          default:
+            code block
+        }
+It works like:
+1) The switch expression is evaluated once.
+2) The value of the expression is compared with the value of each case.
+3) If there is a match, the associated block of code is executed.
+4) If there is no match, the default code block is executed. 
+The break keyword:-
+JavaScript reaches a break keyword, it breaks out of the switch block. This will stop the execution inside 
+the switch block.
+The default keyword:-
+The default keyword specifies the code to run if there is no case match.
+*/
+
+const superHero = "Captain America";
+
+switch (superHero) {
+  case "Iron Man":
+    console.log("I am Iron Man...");
+    break;
+  case "Thor":
+    console.log("That is my hammer!");
+    break;
+  case "Captain America":
+    console.log("Never give up");
+    break;
+  case "Black Widow":
+    console.log("One shot, one kill");
+    break;
+  default:
+    console.log("Enter a valid superhero name.");
+}
+
+// Ternary operator
+/* This operator is frequently used as an alternative to an if...else statement.
+Syntax:
+consition ? exprIfTrue : exprIfFalse 
+
+condition:- An expression whose value is used as a condition.
+exprIfTrue:- An expression which is executed if the condition is truthy.
+exprIfFalse:- An expresssion which is executed if the condition is falsy. */
+
+// To check the eligibility to vote.
+const age1 = 20;
+age1 >= 18
+  ? console.log("You are eligible to vote.")
+  : console.log("You are not eligible to vote yet");
+
+// While loop
+/* The while loop loops through a block of code as long as a specified condition is true.
+Syntax:
+while (condition) {
+  code block to be executed
+} */
+
+// print 0 to 9 numbers in console.
+let i = 0;
+while (i < 10) {
+  console.log(i);
+  i++;
+}
+
+// For loop
+/* A for loop repeats until a specified condition evaluates to false. The purpose of a for loop
+is when you want repeat an condition multiple times.
+Syntax:
+for ([initialization]; [condition]; [final-expression]){
+  statement
+}
+
+initialization:- Declare or initialize varaible ex. let i = 0
+condtion:- add condition ex. i < 10
+final-expression:- increment or decrement a value ex. i++ or i-- */
+
+// print hello world 5 times in console.
+for (let i = 0; i < 5; i++) {
+  console.log("Hello World", i);
+}
