@@ -13,7 +13,7 @@ function name(parameter) {
 ```javascript
 let name = function (parameter) {
   // statement
-};
+}
 ```
 
 ## Arrow Function
@@ -21,7 +21,7 @@ let name = function (parameter) {
 ```javascript
 const name = (parameter) => {
   // statement
-};
+}
 ```
 
 ## Parameter vs Arguments
