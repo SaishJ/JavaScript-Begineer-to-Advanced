@@ -1,23 +1,63 @@
 # Logic and Control Flow
 
-### ▪ IF statement
+## Conditional Statements
 
-### ▪ Truthy and Falsy
+### If-Else statement
+```javascript
+if (condition) {
+  // code to be executed if the condition is true
+} else {
+  // code to be executed if the condiyion is false
+}
+```
 
-### ▪ Logical Operators
+### If- Else If -Else statement
+```javascript
+if (condition1) {
+  // code to be executed if the condition is true
+} else if (condition2) {
+  /* code to be executed if the
+     condition1 is false and
+     condition2 is true */
+} else {
+  /* code to be executed if
+     condition1 is false and
+     condition2 is false */
+}
+```
 
-### There are 3 types of logical operator
+### Switch statement
+```javascript
+switch (expression) {
+  case x:
+    // code block
+    break;
+  case y:
+    // code block
+    break;
+  default:
+    // code block
+}
+```
 
-### 1) AND (&&)
+### Ternary Operator
+```javascript
+condition ? exprIFTrue : exprIfFalse
+```
+> condition: An expression whose value is used as a condition.
 
-### 2) OR (||)
+> exprIfTrue: An expression which is executed if the condition is truthy.
 
-### 3) NOT (!)
+> exprIfFalse: An expression which is executed if the condition is falsy.
 
-### ▪ Switch statement
+### Truthy / Falsy Values
+#### FALSY Values
+* false
+* 0 (zero)
+* "", '', `` (empty strings)
+* null
+* undefined
+* NaN (not a number)
 
-### ▪ Ternary operator
-
-### ▪ While loop
-
-### ▪ For loop
+#### TRUTHY Values
+* Everything that is not FALSY
