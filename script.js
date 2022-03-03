@@ -1,202 +1,153 @@
-// Logic and Control Flow
-/*
-    ▪ IF statement
-    ▪ Truthy and Falsy
-    ▪ Switch statement
-    ▪ Ternary operator
-*/
+// Functions
+/* A JavaScript function is a block of code designed to perform a particular task.
+console.log is also JavaScript built-in function.
 
-// IF statement
-/* Use if statement to specify a block of code to be executed, if a specified condition is true.
-Syntax: if (condition) {
-            code to be executed if the condition is true
-        } 
-*/
-/* const age = 24;
-if (age > 18) {
-  console.log("Age is greater than 18.");
-} */
-
-// Else statement
-/* Use else statement to specify a block of code to be executed if the condition is false.
-Syntax: if (condition) {
-            code to be executed if the condition is true
-        } else {
-            code to be executed if the condiyion is false
-        } 
-*/
-const temprature = 30;
-if (temprature > 28) {
-  console.log("Sunny");
-} else {
-  console.log("Overcast");
+Syntax:-
+A function declaration (defining a function)
+function name (parameter){
+    return statements
 }
 
-// If - else if - else statement
-/* Use else if statement to specify a new condition to test, if the first condition is false
-Syntax: if (condition1) {
-            code to be executed if the condition is true
-        } else if (condition2) {
-            code to be executed if the condition1 is false 
-            and condition2 is true
-        } else {
-            code to be executed if the 
-            condition1 is false and
-            condition2 is false
-        } 
-*/
-const weather = 18;
-if (weather > 25) {
-  console.log("Sunny");
-} else if (weather > 22) {
-  console.log("Overcast");
-} else {
-  console.log("Cold");
-}
+A function call (calling/executing a function)
+function_name() */
 
-// Truthy and Falsy
+/* Syntax explaination:-
+function: Is a reserved JavaScript keyword for creating a function.
+name: name the function anything, but it cannot be a reserve JavaScript keyword.
+parameter: parameter are values, to send to function when calling it.
+return: the return keyword is how we pass things back out of our function.
+
+Calling a function: inside the paranthesis put some arguments, Arguments are the values to fill parameter with. */
+
+function square(number) {
+  return number * number;
+}
+console.log(square(5));
+
+// Declaring and Invoking functions
+
+// There are a few different ways to deafine a function.
+
+// 1) A function declaration (named function)
 /* 
-Truthy expression always evaluate to boolean true and falsy evaluate to boolean false.
-
-When a value is evaluated in a boolean context, if the value is true it is called a truthy and if it is
-false it is called a falsy.
-There are 6 falsy values:
-false
-0 (zero)
-"", '', `` (empty strings)
-null
-undefined
-NaN (Not a number)
-
-Truthy:
-Everything that is not falsy is truthy. */
-
-if (5) {
-  console.log("Truthy");
-} else {
-  console.log("Falsy");
-}
-// Output -> Truthy
-
-// Logical Operators
-/* Logical operators are used to combine two or more condition. JavaScript includes three logical operators
-1) OR (||)
-2) AND (&&)
-3) NOT (!)
-Logical operators are often used as a condition and if statements. */
-// AND operator example:
-// Example of PUB
-
-// isCool and is above the age of 18
-const age = 19;
-const isCool = true;
-
-if (isCool && age > 18) {
-  console.log("You may enter!");
-} else {
-  console.log("You cannot enter.");
-}
-
-// OR operator example:
-const day = "sunday";
-
-if (day === "saturday" || day === "sunday") {
-  console.log("Enjoy the weekend.");
-} else {
-  console.log("Do some work");
-}
-
-// NOT operator example:
-console.log(!true); //false
-
-console.log(!false); //true
-
-// Switch statement
-/* The switch statement is used to perform different actions based on 
-different conditions.
-Syntax: switch(expression) {
-          case x:
-            code block
-            break;
-          case y:
-            code block
-            break;
-          default:
-            code block
-        }
-It works like:
-1) The switch expression is evaluated once.
-2) The value of the expression is compared with the value of each case.
-3) If there is a match, the associated block of code is executed.
-4) If there is no match, the default code block is executed. 
-The break keyword:-
-JavaScript reaches a break keyword, it breaks out of the switch block. This will stop the execution inside 
-the switch block.
-The default keyword:-
-The default keyword specifies the code to run if there is no case match.
-*/
-
-const superHero = "Captain America";
-
-switch (superHero) {
-  case "Iron Man":
-    console.log("I am Iron Man...");
-    break;
-  case "Thor":
-    console.log("That is my hammer!");
-    break;
-  case "Captain America":
-    console.log("Never give up");
-    break;
-  case "Black Widow":
-    console.log("One shot, one kill");
-    break;
-  default:
-    console.log("Enter a valid superhero name.");
-}
-
-// Ternary operator
-/* This operator is frequently used as an alternative to an if...else statement.
-Syntax:
-consition ? exprIfTrue : exprIfFalse 
-
-condition:- An expression whose value is used as a condition.
-exprIfTrue:- An expression which is executed if the condition is truthy.
-exprIfFalse:- An expresssion which is executed if the condition is falsy. */
-
-// To check the eligibility to vote.
-const age1 = 20;
-age1 >= 18
-  ? console.log("You are eligible to vote.")
-  : console.log("You are not eligible to vote yet");
-
-// While loop
-/* The while loop loops through a block of code as long as a specified condition is true.
-Syntax:
-while (condition) {
-  code block to be executed
-} */
-
-// print 0 to 9 numbers in console.
-let i = 0;
-while (i < 10) {
-  console.log(i);
-  i++;
-}
-
-// For loop
-/* A for loop repeats until a specified condition evaluates to false. The purpose of a for loop
-is when you want repeat an condition multiple times.
-Syntax:
-for ([initialization]; [condition]; [final-expression]){
+function name (params) {
   statement
 }
+*/
 
-initialization:- Declare or initialize varaible ex. let i = 0
-condtion:- add condition ex. i < 10
-final-expression:- increment or decrement a value ex. i++ or i-- */
-
-// print hello world 5 times in console.
-for (let i = 0; i < 5; i++) {
-  console.log("Hello World", i);
+function cube(number) {
+  return number * number * number;
 }
+console.log(cube(2));
+
+// 2) A function expression
+/* 
+A function expression defines a name or an anonymous function.
+An anonymous function is a function that has no name.
+ex.
+Setting the anonymous function to be equal to a variable.
+
+const name = function (params) {
+  statement
+} 
+*/
+
+const sayHi = function (name) {
+  console.log(`Hi, ${name}!`);
+};
+sayHi("Saish"); //invoke the function.
+sayHi("Laukeek");
+
+// 3) Arrow function (ES6)
+/* 
+Arrow function is a shorter syntax for writing funtion expression.
+ex.
+const name = (params) => {
+  statement
+}
+Arrow function are the most modren way to create a JavaScript function. 
+*/
+/*
+const sayHi = (name) => {
+  console.log(`Hi, ${name}.`);
+};
+sayHi("Sanmay");
+*/
+
+// Invoking function
+/*
+A function is executed only when it is call, this process is also known as invocation.
+Invoke a function by referencing the function name followed by an open and close parantheses.
+ex.
+const name = (params) => {
+  statement
+}
+name(); // invoking/calling/execute 
+*/
+
+// Function Return
+/* 
+The return statement stops the execution of a function and returns a value.
+Synatx:
+return [expression]
+The expression whose value is to be returned. If omitted, undefined is returned instead. 
+*/
+
+const add = (a, b) => {
+  return a + b;
+  return "Returned";
+  // Whenever we have multiple return statements, only the first one is going to be executed.
+};
+
+const sum = add(2, 4);
+console.log(sum);
+
+// Arrow functions
+
+/* Arrow functions are the most modern and most concise way of writting JavaScript functions. 
+Arrow functions do not create their own 'this' value. 'this' is a special JavaScript reserve keyword. 
+Syntax:-
+const functionName = (parameter) => {
+  statement
+} */
+
+const square1 = (number) => {
+  return number * number;
+};
+
+const result1 = square1(10);
+console.log(result1);
+
+/* Arrow function also have a shorter way, whenever in arrow function have only one return statement remove
+return keyword and pair of curly braces, and only have one parameter remove parantheses of parameter. */
+
+const cube1 = (number) => number * number * number;
+
+const result2 = cube1(2);
+console.log(result2);
+
+// Parameters vs Arguments
+/* 
+Parameters:- Parameters are used when defining a function.
+Arguments:- Arguments are real values passed when making a function call. 
+*/
+
+const message = (name, age) => {
+  console.log(`${name} is ${age} years old.`);
+};
+message("Saish", 21);
+
+// Default parameter
+/* If we are not passing an argument for the parameter of age, that parameter automatically recieves the value of undefined. */
+
+message("Pratik");
+// Pratik is undefined years old.
+
+// We always get something and not undefined then we use default parameter.
+
+const message1 = (name = "User", age = "2") => {
+  console.log(`${name} is ${age} years old.`);
+};
+
+message1("Jhon");
+// Jhon is 2 years old.

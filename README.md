@@ -1,23 +1,29 @@
-# Logic and Control Flow
+# Functions
 
-### ▪ IF statement
+## Normal Function Declaration
 
-### ▪ Truthy and Falsy
+```javascript
+function name(parameter) {
+  // statement
+}
+```
 
-### ▪ Logical Operators
+## Function stored in a variable
 
-### There are 3 types of logical operator
+```javascript
+let name = function (parameter) {
+  // statement
+};
+```
 
-### 1) AND (&&)
+## Arrow Function
 
-### 2) OR (||)
+```javascript
+const name = (parameter) => {
+  // statement
+};
+```
 
-### 3) NOT (!)
+## Parameter vs Arguments
 
-### ▪ Switch statement
-
-### ▪ Ternary operator
-
-### ▪ While loop
-
-### ▪ For loop
+![Slide 4_3 - 1](https://user-images.githubusercontent.com/59008917/156540500-02eea6ff-a671-4b71-8805-3391272fe29b.png)
