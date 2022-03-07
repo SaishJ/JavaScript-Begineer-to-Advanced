@@ -6,3 +6,4 @@
 ### [03- Operators](https://github.com/SaishJ/JavaScript-Begineer-to-Advanced/tree/03-Operators)
 ### [04- Logic and Control Flow](https://github.com/SaishJ/JavaScript-Begineer-to-Advanced/tree/04-Logic_and_Control_Flow)
 ### [05- Functions](https://github.com/SaishJ/JavaScript-Begineer-to-Advanced/tree/05-Functions)
+### [06- Tricky Concepts](https://github.com/SaishJ/JavaScript-Begineer-to-Advanced/tree/06-Tricky-Concepts)
