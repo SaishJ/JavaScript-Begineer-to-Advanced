@@ -1,153 +1,97 @@
-// Functions
-/* A JavaScript function is a block of code designed to perform a particular task.
-console.log is also JavaScript built-in function.
+// Tricky Concepts
 
-Syntax:-
-A function declaration (defining a function)
-function name (parameter){
-    return statements
+// Scope
+/* Global Scope: 
+                Scope refers to the visibility of variables. Variables which are defined outside of a function block have 
+                Global Scope. This means, they can be seen everywhere in code. */
+
+// ex.
+
+for (var i = 1; i <= 5; i++) {
+  console.log("Inside the loop: " + i);
+}
+console.log("Outside the loop: " + i);
+
+/* explaination:- var i is a global variable. Therefore it can be accessed from both inside and outside the loop. */
+
+/* Local/Function Scope:
+                        Variables which are declared within a function, as well as the function parameters, have 
+                        local scope. That means they are only visible within that function. */
+
+// example: A function myTest with a local variable called loc.
+
+function myTest() {
+  const loc = "foo";
+  console.log(loc);
 }
 
-A function call (calling/executing a function)
-function_name() */
+myTest();
+// console.log(loc);
 
-/* Syntax explaination:-
-function: Is a reserved JavaScript keyword for creating a function.
-name: name the function anything, but it cannot be a reserve JavaScript keyword.
-parameter: parameter are values, to send to function when calling it.
-return: the return keyword is how we pass things back out of our function.
+/* explaination:- The myTest() function call will display the string "foo" in the console. The console.log(loc) line
+(outside of the myTest function) will throw an error, as loc is not defined outside of the function. */
 
-Calling a function: inside the paranthesis put some arguments, Arguments are the values to fill parameter with. */
+/* Block Scope: 'let' and 'const' proide Bllock Scope in JavaScript. Variables declared inside a { } block cannot be 
+accessed from outside the block. */
 
-function square(number) {
-  return number * number;
+// ex:
+
+for (let i = 1; i <= 5; i++) {
+  console.log("Inside the loop: " + i);
 }
-console.log(square(5));
+console.log("Outside the loop: " + i);
 
-// Declaring and Invoking functions
+/* explaination:- let i is a block scope, ReferenceError occurs when access the variable outside the block. 
+Therefore it can be accessed only inside the for loop i.e. block where it is defined. */
 
-// There are a few different ways to deafine a function.
+// Hoisting
 
-// 1) A function declaration (named function)
-/* 
-function name (params) {
-  statement
+// ex1.
+console.log(age);
+var age = 21; //undefined
+
+/* Explaination:- 
+Why undefined should'nt it say name, doesn't exist (ReferenceError)
+=> It's because of hoisting.
+During the creation phase JE (JavaScript Engine) sees this variable (name) and allocates memory for it 
+and keeps undefined as its value.
+So since hoisting happens in creation phase there is already a variable name in the memory with value 
+undefined.
+So during execution phase when it runs the file from top to bottom (this is what it sees.) (not physically)
+
+var name = undefined;   -> this is hoisting
+console.log(name);
+var name = "Saish"; 
+
+NOTE:- Variables are partially hoisted.
+Meaning:- They are allocated memory but not assigned actual value, what we give. They are simply 
+assigned undefined.
+*/
+
+// Closure
+
+/* A Closure has the three scope chains listed as follows:
+1) Access to its own scope.
+2) Access to the variables of the outer function.
+3) Access to the global variables. */
+
+function myFunc() {
+  var a = 5; // 'a' is the local variable created by the myFunc()
+
+  function innerFunc() {
+    // the innerFunc() is the inner function, or a closure.
+    return a;
+  }
+  return innerFunc();
 }
-*/
 
-function cube(number) {
-  return number * number * number;
-}
-console.log(cube(2));
+const output = myFunc();
+console.log(output);
 
-// 2) A function expression
-/* 
-A function expression defines a name or an anonymous function.
-An anonymous function is a function that has no name.
-ex.
-Setting the anonymous function to be equal to a variable.
-
-const name = function (params) {
-  statement
-} 
-*/
-
-const sayHi = function (name) {
-  console.log(`Hi, ${name}!`);
-};
-sayHi("Saish"); //invoke the function.
-sayHi("Laukeek");
-
-// 3) Arrow function (ES6)
-/* 
-Arrow function is a shorter syntax for writing funtion expression.
-ex.
-const name = (params) => {
-  statement
-}
-Arrow function are the most modren way to create a JavaScript function. 
-*/
-/*
-const sayHi = (name) => {
-  console.log(`Hi, ${name}.`);
-};
-sayHi("Sanmay");
-*/
-
-// Invoking function
-/*
-A function is executed only when it is call, this process is also known as invocation.
-Invoke a function by referencing the function name followed by an open and close parantheses.
-ex.
-const name = (params) => {
-  statement
-}
-name(); // invoking/calling/execute 
-*/
-
-// Function Return
-/* 
-The return statement stops the execution of a function and returns a value.
-Synatx:
-return [expression]
-The expression whose value is to be returned. If omitted, undefined is returned instead. 
-*/
-
-const add = (a, b) => {
-  return a + b;
-  return "Returned";
-  // Whenever we have multiple return statements, only the first one is going to be executed.
-};
-
-const sum = add(2, 4);
-console.log(sum);
-
-// Arrow functions
-
-/* Arrow functions are the most modern and most concise way of writting JavaScript functions. 
-Arrow functions do not create their own 'this' value. 'this' is a special JavaScript reserve keyword. 
-Syntax:-
-const functionName = (parameter) => {
-  statement
-} */
-
-const square1 = (number) => {
-  return number * number;
-};
-
-const result1 = square1(10);
-console.log(result1);
-
-/* Arrow function also have a shorter way, whenever in arrow function have only one return statement remove
-return keyword and pair of curly braces, and only have one parameter remove parantheses of parameter. */
-
-const cube1 = (number) => number * number * number;
-
-const result2 = cube1(2);
-console.log(result2);
-
-// Parameters vs Arguments
-/* 
-Parameters:- Parameters are used when defining a function.
-Arguments:- Arguments are real values passed when making a function call. 
-*/
-
-const message = (name, age) => {
-  console.log(`${name} is ${age} years old.`);
-};
-message("Saish", 21);
-
-// Default parameter
-/* If we are not passing an argument for the parameter of age, that parameter automatically recieves the value of undefined. */
-
-message("Pratik");
-// Pratik is undefined years old.
-
-// We always get something and not undefined then we use default parameter.
-
-const message1 = (name = "User", age = "2") => {
-  console.log(`${name} is ${age} years old.`);
-};
-
-message1("Jhon");
-// Jhon is 2 years old.
+/* Explaination:-
+                  There are two functions: myFunc() and innerFunc().
+The function myFunc() creates the local variable 'a'. The innerfunction innerFun() is only present in the body 
+of myFunc(). The inner function access the outer function variable, so the function innerFunc() access the 
+variable 'a' which is declared in myFunc().
+        This is the closure in which the inner function have access to the global variable and outer function 
+variables. */
