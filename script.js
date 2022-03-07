@@ -1,7 +1,7 @@
 // Tricky Concepts
 
 // Scope
-/* Global Scope: 
+/* 1) Global Scope: 
                 Scope refers to the visibility of variables. Variables which are defined outside of a function block have Global Scope. This means, they can be seen everywhere 
 in code. */
 
@@ -13,7 +13,7 @@ console.log("Outside the loop: " + i);
 
 /* explaination:- var i is a global variable. Therefore it can be accessed from both inside and outside the loop. */
 
-/* Local/Function Scope:
+/* 2) Local/Function Scope:
                         Variables which are declared within a function, as well as the function parameters, have local scope. That means they are only visible within that 
 function. */
 
@@ -29,7 +29,8 @@ myTest();
 /* explaination:- The myTest() function call will display the string "foo" in the console. The console.log(loc) line (outside of the myTest function) will throw an error, 
 as loc is not defined outside of the function. */
 
-/* Block Scope: 'let' and 'const' proide Bllock Scope in JavaScript. Variables declared inside a { } block cannot be accessed from outside the block. */
+/* 3) Block Scope: 
+                  'let' and 'const' proide Bllock Scope in JavaScript. Variables declared inside a { } block cannot be accessed from outside the block. */
 
 // ex:
 for (let i = 1; i <= 5; i++) {
@@ -37,7 +38,7 @@ for (let i = 1; i <= 5; i++) {
 }
 console.log("Outside the loop: " + i);
 
-/* explaination:- let i is a block scope, ReferenceError occurs when access the variable outside the block. Therefore it can be accessed only inside the for loop i.e. block 
+/* Explaination:- let i is a block scope, ReferenceError occurs when access the variable outside the block. Therefore it can be accessed only inside the for loop i.e. block 
 where it is defined. */
 
 // Hoisting
