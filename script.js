@@ -1,97 +1,186 @@
-// Tricky Concepts
+// Strings in Detail
 
-// Scope
-/* Global Scope: 
-                Scope refers to the visibility of variables. Variables which are defined outside of a function block have 
-                Global Scope. This means, they can be seen everywhere in code. */
+/* There are 3 ways to create Strings. */
+// 1) Single quote:-
+const single = "This is a string.";
+console.log(single);
 
-// ex.
+// 2) Double quote:-
+const double = "This is a string.";
+console.log(double);
 
-for (var i = 1; i <= 5; i++) {
-  console.log("Inside the loop: " + i);
-}
-console.log("Outside the loop: " + i);
+// 3) Backticks:-
+const backtick = `This is a string.`;
+console.log(backtick);
 
-/* explaination:- var i is a global variable. Therefore it can be accessed from both inside and outside the loop. */
+/* Strings created with Single or Double quotes are the same, call them simple or basic strings, they simply represents static or
+textual values. */
 
-/* Local/Function Scope:
-                        Variables which are declared within a function, as well as the function parameters, have 
-                        local scope. That means they are only visible within that function. */
+/* Strings created with backticks provide extended functionality, they are dynamic. They allow us to execute real JavaScript logic
+inside of curly braces ${}.
+Everything that put in between the dollar sign and curly braces ${}, it's not simply taken for granted. It is evaluated as 
+JavaScript logic. */
+const add = `${2 + 2}`;
+console.log(add); //4
 
-// example: A function myTest with a local variable called loc.
+// Also make function call inside backticks strings.
 
-function myTest() {
-  const loc = "foo";
-  console.log(loc);
-}
+const sum = (a, b) => a + b;
+const total = `The sum is ${sum(2, 10)}`;
+console.log(total);
 
-myTest();
-// console.log(loc);
-
-/* explaination:- The myTest() function call will display the string "foo" in the console. The console.log(loc) line
-(outside of the myTest function) will throw an error, as loc is not defined outside of the function. */
-
-/* Block Scope: 'let' and 'const' proide Bllock Scope in JavaScript. Variables declared inside a { } block cannot be 
-accessed from outside the block. */
-
-// ex:
-
-for (let i = 1; i <= 5; i++) {
-  console.log("Inside the loop: " + i);
-}
-console.log("Outside the loop: " + i);
-
-/* explaination:- let i is a block scope, ReferenceError occurs when access the variable outside the block. 
-Therefore it can be accessed only inside the for loop i.e. block where it is defined. */
-
-// Hoisting
-
-// ex1.
-console.log(age);
-var age = 21; //undefined
-
-/* Explaination:- 
-Why undefined should'nt it say name, doesn't exist (ReferenceError)
-=> It's because of hoisting.
-During the creation phase JE (JavaScript Engine) sees this variable (name) and allocates memory for it 
-and keeps undefined as its value.
-So since hoisting happens in creation phase there is already a variable name in the memory with value 
-undefined.
-So during execution phase when it runs the file from top to bottom (this is what it sees.) (not physically)
-
-var name = undefined;   -> this is hoisting
-console.log(name);
-var name = "Saish"; 
-
-NOTE:- Variables are partially hoisted.
-Meaning:- They are allocated memory but not assigned actual value, what we give. They are simply 
-assigned undefined.
+// let text = "We are the so-called "Viking" from the north.";
+/* The string text will be chopped to "We are the so-called".
+The solution to avoid this problem is to use the backslash escape character.
+The backslash (\) escape character turns special characters into string characters.
 */
 
-// Closure
+let text = 'We are the so-called "Vikings" from the north.';
+console.log(text);
 
-/* A Closure has the three scope chains listed as follows:
-1) Access to its own scope.
-2) Access to the variables of the outer function.
-3) Access to the global variables. */
+const greeting = 'Hi, I\'m John, but people call me "Johny".';
+console.log(greeting);
 
-function myFunc() {
-  var a = 5; // 'a' is the local variable created by the myFunc()
+// String Length and Basic property
 
-  function innerFunc() {
-    // the innerFunc() is the inner function, or a closure.
-    return a;
-  }
-  return innerFunc();
-}
+// To find the length of a string, use built-in length property.
+const name = "Saish";
 
-const output = myFunc();
-console.log(output);
+console.log(name.length); //5
 
-/* Explaination:-
-                  There are two functions: myFunc() and innerFunc().
-The function myFunc() creates the local variable 'a'. The innerfunction innerFun() is only present in the body 
-of myFunc(). The inner function access the outer function variable, so the function innerFunc() access the 
-variable 'a' which is declared in myFunc().
-        This is the closure in which the inner function have access to the global variable and outer function 
-variables. */
+// Get a certain character of string, use square brackets syntax to access a certain position of character.
+const fullName = "Saish Ajay Jagatp";
+const firstLetter = fullName[4]; //h
+
+console.log(firstLetter);
+
+// Change String Case
+// In JavaScript two simple methods for changing the character case. (lowercase and uppercase)
+
+const mixedCaseString = "Hello!, How are you?";
+
+const lowerCaseString = mixedCaseString.toLowerCase();
+const upperCaseString = mixedCaseString.toUpperCase();
+
+console.log(lowerCaseString); //hello!, how are you?
+console.log(upperCaseString); //HELLO!, HOW ARE YOU?
+
+// Searching for a Substring
+
+const hobbies = "I love HTML, CSS, JavaScript, Bootstrap, JavaScript.";
+
+// includes(): The includes() method returns true if a string contains a specified string, otherwise it returns false.
+const include = hobbies.includes("HTML");
+console.log(include); //true
+
+/* indexOf(): The indexOf() method returns the position of the first occurrence of a value in a string. The indexOf() 
+method returns -1 if the value is not found. */
+const index = hobbies.indexOf("CSS");
+console.log(index); //13
+
+/* lastIndexOf(): The lastIndexOf() method returns the index (position) of the last occurrence of a specified value in a string.
+It searches the string from the end to the beginning. It returns -1 if the value is not found. */
+const lastIndex = hobbies.lastIndexOf("JavaScript");
+console.log(lastIndex); //41
+
+// startsWith(): The startsWith() method returns true if string starts with specified string. Otherwise it returns false.
+const startWith = hobbies.startsWith("love");
+console.log(startWith); //false
+
+// endsWith(): The endsWith() method returns true if a string ends with a specified string, otherwise it returns false.
+const endWith = hobbies.endsWith("JavaScript.");
+console.log(endWith); //true
+
+// Getting a Substring
+/* To get the sustring of a string the best method to use it called slice. slice() method returns the sub-string of a string.
+Syntax: 
+string.slice(start, end);
+start:- Required, The start position (First character is 0).
+end:- Optional, The end position. Default is string length.
+*/
+const example = "hotdog";
+const hot = example.slice(0, 3);
+
+console.log(hot); //hot
+
+const dog = example.slice(3);
+console.log(dog); //dog
+
+// Split a String
+/* The split() method splits a string into an array of substring.
+split(''):- It returns an array of character of a string.
+split(' '):- It returns an array of words of a string. The string is split between words. 
+*/
+const exampleString = "The quick brown fox jumps over the lazy dog.";
+
+const character = exampleString.split("");
+console.log(character);
+
+const words = exampleString.split(" ");
+console.log(words);
+
+// Repeat and Trim a string
+
+// repeat()
+// The repeat() method returns a string with a number of copies of a string.
+const dogSays = "woof";
+const repeatString = dogSays.repeat(5);
+
+console.log(repeatString);
+
+// trim()
+// The trim() method removes whitespace from both sides of a string.
+const email = "   saishj@gmail.com   ";
+const trimString = email.trim();
+
+console.log(trimString);
+
+// Exercise
+const guestList = "Our guests are: prafulla, pratik, shivam, mayuresh";
+
+// Get a length of the string. Store it in a variable called length.
+const length = guestList.length;
+console.log(length);
+
+// Uppercase the entire string. Store the reult in a variable called uppercasedGuestList.
+const uppercasedGuestList = guestList.toUpperCase();
+console.log(uppercasedGuestList);
+
+/* Check whether 'PRAFULLA' is on the uppercasedGuestList. Store the answer in a variable called 
+isPrafullaOnTheList. The data type of the variable must be a boolean. */
+const isPrafullaOnTheList = uppercasedGuestList.includes("PRAFULLA");
+console.log(isPrafullaOnTheList);
+
+/* Create a substring that only contains the following: 'PRAFULLA, PRATIK, SHIVAM, MAYURESH'. 
+Store the answer in a variable called substringGuests. */
+const substringGuests = uppercasedGuestList.slice(16);
+console.log(substringGuests);
+
+/* Out of a substring just created. Create an array of names of prople that are on the list.
+Store that array in a variable called guests. */
+const guests = substringGuests.split(",");
+console.log(guests);
+
+// charAt()
+// The charAt() method returns the character at a specified index (position) in a string.
+const text1 = "Hello!, World";
+const char = text1.charAt(4);
+
+console.log(char); //o
+
+// replace()
+/* string.replace(substr, newSubstr);
+It returns  a new string with a substring (substr) replaced by a new one (newSubstr). */
+const password = "sj123";
+const newPassword = password.replace("sj123", "saish123");
+
+console.log(newPassword);
+
+// substr()
+/* string.substr(start, length) 
+It returns a position of the string, starting at the specified index and extending for 
+a given number. */
+const text2 = "Hello!, world";
+const result = text2.substr(3, 6);
+
+console.log(result);

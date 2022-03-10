@@ -1,31 +1,106 @@
-# Tricky Concepts
+# Strings in Detail
 
-## Scope
+## Introduction to String
 
-> **Scope** simply allows to know where we have access to our variables. In simple words, **Scope** is the accessibility of variables, function and objects in some particular part of code during runtime.
+> In JavaScript, use **Strings** to store Text. It is a primitive Data-Type.
 
-### Types of Scope:
+- There are 3 ways to create strings
 
-1. Global Scope
-2. Local Scope
-3. Block Scope (only with let and const)
+1. Single quote:-
 
-- Global Scope:
+```javascript
+const single = "This is a string.";
+console.log(single);
+```
 
-  > Variables declared Globally (outside any function) have **Global Scope**. Global variables can be accessed from anywhere in a JavaScript program. Variables declared with `var`, `let`, and `const` are quite similar when declared outside a block. They all have **Global Scope**.
+2. Double quote:-
 
-- Local / Function Scope:
+```javascript
+const double = "This is a string.";
+console.log(double);
+```
 
-  > Variables which are declared within a function, as well as the function parameters have **local scope**. That means they are only visible within that function.
+3. Backticks:-
 
-- Block Scope:
+```javascript
+const backtick = `This is a string.`;
+console.log(backtick);
+```
 
-  > `let` and `const` keywords provide **Block Scope** in JavaScript. Variables declared inside a `{}` block cannot be accessed from outside the block.
+- The Backslash `\` escape character turns special character into string character:
 
-## Hoisting
+| Code | Result | Description  |
+| :--: | :----: | :----------: |
+|  \'  |   '    | Single Quote |
+|  \"  |   "    | Double Quote |
+|  \\  |   \    |  Backslash   |
 
-> **Hoisting** is a JavaScript mechanism, where variables and function declaration are moved to the top of their scope before code execution.
+## String Methods
 
-## Closure
+- `string.length`
 
-> A **Closure** defined as, the inner function has access to the outer function variable. In **JavaScript**, every time a **closure** is created with the creation of a **function**.
+  > return the number of characters in a string.
+
+- `string[index]`
+
+  > get a certain character of a string.
+
+- `string.toLowerCase`
+
+  > return a lowercased string.
+
+- `string.toUpperCase`
+
+  > return an uppercased string.
+
+- `string.includes('substring')`
+
+  > checks whether a substring exists inside of a string [check the character case]
+
+- `string.indexOf(searchValue)`
+
+  > returns the index of the first occurrence of the specified value, starting the search at fromIndex. Returns -1 if the value is not found.
+
+- `string.lastIndexOf(searchValue)`
+
+  > returns the index of the last occurrence of the speciffied value, searching backwards from fromIndex. Returns -1 if the value is not found.
+
+- `string.startsWith('substring')`
+
+  > The startsWith() method returns true if string with specified string, otherwise it returns false.
+
+- `string.endsWith('substring')`
+
+  > The endsWith() method returns if a string ends with a specified string, otherwise it returns false.
+
+- `string.slice(start, end)`
+
+  > The slice() method extracts a part of a string and return it as a new string without modifying the original string. The start and end parameter specifies the part of the string to extract.
+
+- `string.split('')`
+
+  > It returns an array of characters of a string.
+
+- `string.split(' ')`
+
+  > It returns an array of words of a string.
+
+- `string.repeat(count)`
+
+  > It returns a string with a number of copies of a string.
+
+- `string.trim()`
+
+  > It removes the whitespace from both sides of a string.
+
+- `string.charAt(index)`
+
+  > It returns the character at a specified index (position) in a string.
+
+- `string.replace(substr, newSubstr)`
+
+  > It returns a new string with a substring (substr) replaced by a new one (newSubstr).
+
+- `string.substr(strat, length)`
+
+  > It returns a portion of the string, starting at the specified index and extending for a given number.
