@@ -13,13 +13,10 @@ console.log(double);
 const backtick = `This is a string.`;
 console.log(backtick);
 
-/* Strings created with Single or Double quotes are the same, call them simple or basic strings, they simply represents static or
-textual values. */
+/* Strings created with Single or Double quotes are the same, call them simple or basic strings, they simply represents static or textual values. */
 
-/* Strings created with backticks provide extended functionality, they are dynamic. They allow us to execute real JavaScript logic
-inside of curly braces ${}.
-Everything that put in between the dollar sign and curly braces ${}, it's not simply taken for granted. It is evaluated as 
-JavaScript logic. */
+/* Strings created with backticks provide extended functionality, they are dynamic. They allow us to execute real JavaScript logic inside of curly braces ${}.
+Everything that put in between the dollar sign and curly braces ${}, it's not simply taken for granted. It is evaluated as JavaScript logic. */
 const add = `${2 + 2}`;
 console.log(add); //4
 
@@ -30,9 +27,8 @@ const total = `The sum is ${sum(2, 10)}`;
 console.log(total);
 
 // let text = "We are the so-called "Viking" from the north.";
-/* The string text will be chopped to "We are the so-called".
-The solution to avoid this problem is to use the backslash escape character.
-The backslash (\) escape character turns special characters into string characters.
+/* The string text will be chopped to "We are the so-called". The solution to avoid this problem is to use the backslash escape character. The backslash (\) escape character 
+turns special characters into string characters.
 */
 
 let text = 'We are the so-called "Vikings" from the north.';
@@ -73,13 +69,12 @@ const hobbies = "I love HTML, CSS, JavaScript, Bootstrap, JavaScript.";
 const include = hobbies.includes("HTML");
 console.log(include); //true
 
-/* indexOf(): The indexOf() method returns the position of the first occurrence of a value in a string. The indexOf() 
-method returns -1 if the value is not found. */
+/* indexOf(): The indexOf() method returns the position of the first occurrence of a value in a string. The indexOf() method returns -1 if the value is not found. */
 const index = hobbies.indexOf("CSS");
 console.log(index); //13
 
-/* lastIndexOf(): The lastIndexOf() method returns the index (position) of the last occurrence of a specified value in a string.
-It searches the string from the end to the beginning. It returns -1 if the value is not found. */
+/* lastIndexOf(): The lastIndexOf() method returns the index (position) of the last occurrence of a specified value in a string. It searches the string from the end to the 
+beginning. It returns -1 if the value is not found. */
 const lastIndex = hobbies.lastIndexOf("JavaScript");
 console.log(lastIndex); //41
 
@@ -134,32 +129,6 @@ const email = "   saishj@gmail.com   ";
 const trimString = email.trim();
 
 console.log(trimString);
-
-// Exercise
-const guestList = "Our guests are: prafulla, pratik, shivam, mayuresh";
-
-// Get a length of the string. Store it in a variable called length.
-const length = guestList.length;
-console.log(length);
-
-// Uppercase the entire string. Store the reult in a variable called uppercasedGuestList.
-const uppercasedGuestList = guestList.toUpperCase();
-console.log(uppercasedGuestList);
-
-/* Check whether 'PRAFULLA' is on the uppercasedGuestList. Store the answer in a variable called 
-isPrafullaOnTheList. The data type of the variable must be a boolean. */
-const isPrafullaOnTheList = uppercasedGuestList.includes("PRAFULLA");
-console.log(isPrafullaOnTheList);
-
-/* Create a substring that only contains the following: 'PRAFULLA, PRATIK, SHIVAM, MAYURESH'. 
-Store the answer in a variable called substringGuests. */
-const substringGuests = uppercasedGuestList.slice(16);
-console.log(substringGuests);
-
-/* Out of a substring just created. Create an array of names of prople that are on the list.
-Store that array in a variable called guests. */
-const guests = substringGuests.split(",");
-console.log(guests);
 
 // charAt()
 // The charAt() method returns the character at a specified index (position) in a string.
