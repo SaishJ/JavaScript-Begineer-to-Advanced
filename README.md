@@ -9,7 +9,7 @@
 1. Single quote:-
 
 ```javascript
-const single = "This is a string.";
+const single = 'This is a string.';
 console.log(single);
 ```
 
