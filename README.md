@@ -31,9 +31,9 @@ console.log(backtick);
 
 | Code | Result | Description  |
 | :--: | :----: | :----------: |
-| (\') |   '    | Single Quote |
-| (\") |   "    | Double Quote |
-| (\\) |   \    |  Backslash   |
+| `\'` |   '    | Single Quote |
+| `\"` |   "    | Double Quote |
+| `\\` |   \    |  Backslash   |
 
 ## String Methods
 
