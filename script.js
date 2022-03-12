@@ -200,3 +200,59 @@ final-expression:- increment or decrement a value ex. i++ or i-- */
 for (let i = 0; i < 5; i++) {
   console.log("Hello World", i);
 }
+
+// do...while Loop
+/* do...while loop are very similar to while loop.
+The do...while statements defines a code block to be executed once, and repeated as long as condition is true.
+Syntax:-
+let i = 0;  //initialExpression
+do {
+    code block to be executed
+}
+while(condition) 
+*/
+
+let i = 0;
+do {
+  console.log(i);
+  i++;
+} while (i <= 5);
+
+// for...in Loop
+/* The for...in statements iterates (loops) over the properties of an object over element in an arrray.
+Syntax:-
+for (key in object) {
+  code block to be executed
+} */
+
+// Iterate over the properties of an object.
+const person = {
+  name: "Saish",
+  age: 21,
+};
+
+for (let key in person) {
+  console.log(key);
+}
+
+// Iterate over the value of an array.
+const colors = ["red", "green", "blue"];
+
+for (let index in colors) {
+  console.log(index);
+}
+
+// for...of Loop
+/* for...of loop are similar to for...in loop.
+The for...of statements iterates (loops) over the values of any iterable.
+Syntax:-
+for (variables of iterable) {
+  code block to be executed
+} */
+
+// Iterate over the values of an array
+const names = ["Pratik", "Prafulla", "Mayuresh"];
+
+for (let list of names) {
+  console.log(list);
+}
