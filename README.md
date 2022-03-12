@@ -61,3 +61,49 @@ condition ? exprIFTrue : exprIfFalse
 
 #### TRUTHY Values
 * Everything that is not FALSY
+
+## Loops
+
+### For Loop
+
+```javascript
+for (st 1; st 2; st3) {
+  // code block to be executed
+}
+```
+
+- st1 is executed (one time) before the execution of the code block.
+- st2 defines the condition for executing the code block.
+- st3 is executed (every time) after the code block has been executed.
+
+### While Loop
+
+```javascript
+while (condition) {
+  // code block to be executed
+}
+```
+
+### Do While Loop
+
+```javascript
+do {
+  // code block to be executed
+} while (condition);
+```
+
+### For In Loop
+
+```javascript
+for (key in object) {
+  // code block to be executed
+}
+```
+
+### For Of Loop
+
+```javascript
+for (variable of iterable) {
+  // code block to be executed
+}
+```
