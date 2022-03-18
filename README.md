@@ -1,106 +1,148 @@
-# Strings in Detail
+# Arrays in Detail
 
-## Introduction to String
+> **Array** stores order collection of data. The DataType of **Array** is an object. Array can store any type of data (eg. String, Number, Object, Boolean, Function, etc.)
 
-> In JavaScript, use **Strings** to store Text. It is a primitive Data-Type.
+## Array Methods
 
-- There are 3 ways to create strings
+- `array.push(value)`
 
-1. Single quote:-
+  > Adds the value to the end of an array.
+
+- `array.pop()`
+
+  > Removes the value from the end of an array.
+
+- `array.shift()`
+
+  > Removes the first item of an array.
+
+- `array.unshift(value)`
+
+  > Adds the value to the start of an array.
+
+- `array.splice(index, no_of_elements)`
+
+  > Removes the `no_of_elements`, starting from `index` from the array.
+
+- `array.slice(fromIndex, toIndex)`
+
+  > Copies a certain part of the array.
+
+- `concat()`
+
+  > Joins several arrays into one.
+
+- `join('')`
+
+  > It returns a string of array values.
+
+- `array.length`
+
+  > It returns the number of elements in an array.
+
+- `reverse()`
+
+  > Reverse the order of the elements in an array.
+
+- `toString()`
+
+  > It returns a string representing the specified array and its elements.
+
+- `includes(searchElement)`
+
+  > Determines whether an array includes a certain value among its entries, returning true or false as appropriate.
+
+- `sort()`
+
+  > It sorts the elements of an array. It sorts an array alphabetically.
+
+- `indexOf(searchElement)`
+
+  > It returns the index of the first occurance of that value.
+
+- `lastIndexOf()`
+
+  > It returns the index of the last occurance of that value.
+
+## Array Methods for Looping
+
+- array.forEach()
+  > It executes a provided function once for each array element.
 
 ```javascript
-const single = "This is a string.";
-console.log(single);
+array.forEach((element, index) => {
+  //code block to be exceuted
+});
 ```
 
-2. Double quote:-
+- array.map()
+  > It creates a new array populated with the results of calling a provided function on every element in the calling array.
 
 ```javascript
-const double = "This is a string.";
-console.log(double);
+array.map((element, index) => {
+  // code block to be executed
+});
 ```
 
-3. Backticks:-
+- array.filter()
+  > It creates a new array with all elements that pass the test implemented by the provided function.
 
 ```javascript
-const backtick = `This is a string.`;
-console.log(backtick);
+array.filter((element, index) => {
+  // code block to be executed
+});
 ```
 
-- The Backslash `\` escape character turns special character into string character:
+- array.find()
+  > It finds an element in the array that matches a certain condition. The **find()** method returns the first value of that satisfies the condition.
 
-| Code | Result | Description  |
-| :--: | :----: | :----------: |
-|  \'  |   '    | Single Quote |
-|  \"  |   "    | Double Quote |
-|  \\  |   \    |  Backslash   |
+```javascript
+array.find((element) => {
+  // code block to be executed
+});
+```
 
-## String Methods
+- array.some()
+  > It tests whether at least one element in the array passes the test implemented by the provided function.
 
-- `string.length`
+```javascript
+array.some((element, index, number) => {
+  // code block to be executed
+});
+```
 
-  > return the number of characters in a string.
+- array.every()
+  > It tests whether all elements in the array pass the test implemented by the provided function. It returns a Boolean value.
 
-- `string[index]`
+```javascript
+array.every((element, index) => {
+  // code block to be executed
+});
+```
 
-  > get a certain character of a string.
+- array.findIndex()
+  > It returns the index of the first element in the array that satisfies the provided testing function.
 
-- `string.toLowerCase`
+```javascript
+array.findIndex((element, index, array) => {
+  // code block to be executed
+});
+```
 
-  > return a lowercased string.
+- array.reduce()
+  > It runs a function on each array element to produce (reduce it to) a single value. It works rom left-to-right.
 
-- `string.toUpperCase`
+```javascript
+array.reduce((prevValue, currentValue, currentIndex, array) => {
+  // code block to be executed
+}, initialValue);
+```
 
-  > return an uppercased string.
+- array.reduceRight()
+  > It runs a function on each array element to produce (reduce it to) a single value. It works from right-to-left.
 
-- `string.includes('substring')`
-
-  > checks whether a substring exists inside of a string [check the character case]
-
-- `string.indexOf(searchValue)`
-
-  > returns the index of the first occurrence of the specified value, starting the search at fromIndex. Returns -1 if the value is not found.
-
-- `string.lastIndexOf(searchValue)`
-
-  > returns the index of the last occurrence of the speciffied value, searching backwards from fromIndex. Returns -1 if the value is not found.
-
-- `string.startsWith('substring')`
-
-  > The startsWith() method returns true if string with specified string, otherwise it returns false.
-
-- `string.endsWith('substring')`
-
-  > The endsWith() method returns if a string ends with a specified string, otherwise it returns false.
-
-- `string.slice(start, end)`
-
-  > The slice() method extracts a part of a string and return it as a new string without modifying the original string. The start and end parameter specifies the part of the string to extract.
-
-- `string.split('')`
-
-  > It returns an array of characters of a string.
-
-- `string.split(' ')`
-
-  > It returns an array of words of a string.
-
-- `string.repeat(count)`
-
-  > It returns a string with a number of copies of a string.
-
-- `string.trim()`
-
-  > It removes the whitespace from both sides of a string.
-
-- `string.charAt(index)`
-
-  > It returns the character at a specified index (position) in a string.
-
-- `string.replace(substr, newSubstr)`
-
-  > It returns a new string with a substring (substr) replaced by a new one (newSubstr).
-
-- `string.substr(strat, length)`
-
-  > It returns a portion of the string, starting at the specified index and extending for a given number.
+```javascript
+array.reduceRight((accumulator, currentValue, index, array) => {
+  // code block to be executed
+}, initialValue);
+```
