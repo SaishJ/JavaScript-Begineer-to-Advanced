@@ -1,148 +1,63 @@
-# Arrays in Detail
+# Objects in Detail
 
-> **Array** stores order collection of data. The DataType of **Array** is an object. Array can store any type of data (eg. String, Number, Object, Boolean, Function, etc.)
+## Introduction to Object
 
-## Array Methods
-
-- `array.push(value)`
-
-  > Adds the value to the end of an array.
-
-- `array.pop()`
-
-  > Removes the value from the end of an array.
-
-- `array.shift()`
-
-  > Removes the first item of an array.
-
-- `array.unshift(value)`
-
-  > Adds the value to the start of an array.
-
-- `array.splice(index, no_of_elements)`
-
-  > Removes the `no_of_elements`, starting from `index` from the array.
-
-- `array.slice(fromIndex, toIndex)`
-
-  > Copies a certain part of the array.
-
-- `concat()`
-
-  > Joins several arrays into one.
-
-- `join('')`
-
-  > It returns a string of array values.
-
-- `array.length`
-
-  > It returns the number of elements in an array.
-
-- `reverse()`
-
-  > Reverse the order of the elements in an array.
-
-- `toString()`
-
-  > It returns a string representing the specified array and its elements.
-
-- `includes(searchElement)`
-
-  > Determines whether an array includes a certain value among its entries, returning true or false as appropriate.
-
-- `sort()`
-
-  > It sorts the elements of an array. It sorts an array alphabetically.
-
-- `indexOf(searchElement)`
-
-  > It returns the index of the first occurance of that value.
-
-- `lastIndexOf()`
-
-  > It returns the index of the last occurance of that value.
-
-## Array Methods for Looping
-
-- array.forEach()
-  > It executes a provided function once for each array element.
+> An object is a built-in data type for storing key-value pairs. Data inside objects are unordered, and the values can be of any type.
 
 ```javascript
-array.forEach((element, index) => {
-  //code block to be exceuted
-});
+object = {
+  property1: value1,
+  property2: value2,
+  .
+  .
+  .
+  propertN: valueN
+}
 ```
 
-- array.map()
-  > It creates a new array populated with the results of calling a provided function on every element in the calling array.
+## Accessing, Adding and Updating properties of an Object
 
-```javascript
-array.map((element, index) => {
-  // code block to be executed
-});
-```
+> There are 2 types of accessing an object properties.
 
-- array.filter()
-  > It creates a new array with all elements that pass the test implemented by the provided function.
+- **Dot Notation**
+- **Bracket Notation**
 
-```javascript
-array.filter((element, index) => {
-  // code block to be executed
-});
-```
+- Dot Notation
 
-- array.find()
-  > It finds an element in the array that matches a certain condition. The **find()** method returns the first value of that satisfies the condition.
+  > The most common way of accessing object properties is through a dot notation. Use a `.` (dot) followed by the property name to access its value.
 
-```javascript
-array.find((element) => {
-  // code block to be executed
-});
-```
+- Bracket Notation
 
-- array.some()
-  > It tests whether at least one element in the array passes the test implemented by the provided function.
+  > The most preferred way of accessing object values are through bracket notation. It access all types of keys which can be used in objects _Eg. Numbers, string (with or without spaces), etc._
 
-```javascript
-array.some((element, index, number) => {
-  // code block to be executed
-});
-```
+## Object Methods
 
-- array.every()
-  > It tests whether all elements in the array pass the test implemented by the provided function. It returns a Boolean value.
+> JavaScript **Objects** may have property values that are functions. These are referred to as object nethods. Methods may be defined using anonymous arrow function expressions, or with shorthand method syntax.
 
-```javascript
-array.every((element, index) => {
-  // code block to be executed
-});
-```
+## Object Built-in-Methods
 
-- array.findIndex()
-  > It returns the index of the first element in the array that satisfies the provided testing function.
+1. **Object.keys()**
+2. **Object.values()**
+3. **Object.entries()**
+4. **Object.freeze()**
+5. **Object.seal()**
 
-```javascript
-array.findIndex((element, index, array) => {
-  // code block to be executed
-});
-```
+- Object.keys()
 
-- array.reduce()
-  > It runs a function on each array element to produce (reduce it to) a single value. It works rom left-to-right.
+  > It creates an array containing the keys of an object.
 
-```javascript
-array.reduce((prevValue, currentValue, currentIndex, array) => {
-  // code block to be executed
-}, initialValue);
-```
+- Object.values()
 
-- array.reduceRight()
-  > It runs a function on each array element to produce (reduce it to) a single value. It works from right-to-left.
+  > It creates an array containing the values of an object.
 
-```javascript
-array.reduceRight((accumulator, currentValue, index, array) => {
-  // code block to be executed
-}, initialValue);
-```
+- Object.entries()
+
+  > It creates a nested array of the key/value pairs of an object.
+
+- Object.freeze()
+
+  > It prevents modification to properties and values of an object.
+
+- Object.seal()
+
+  > It prevents new properties from being added to an object, but allows the modification of existing properties.
