@@ -9,3 +9,4 @@
 ### [06- Tricky Concepts](https://github.com/SaishJ/JavaScript-Begineer-to-Advanced/tree/06-Tricky-Concepts)
 ### [07- Strings in Detail](https://github.com/SaishJ/JavaScript-Begineer-to-Advanced/tree/07-Strings_in_Detail)
 ### [08- Arrays in Detail](https://github.com/SaishJ/JavaScript-Begineer-to-Advanced/tree/08-Arrays_in_Detail)
+### [09- Objects in Detail](https://github.com/SaishJ/JavaScript-Begineer-to-Advanced/tree/09-Objects_in_Detail)
