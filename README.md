@@ -92,3 +92,115 @@ new Date(date string)
 7. setMilliseconds()
 
    > Set the milliseconds (0-999).
+
+## JavaScript Math Objects
+
+> The JavaScript Math object allows to perform mathematical tasks on numbers. The Math object has no constructor.
+
+1. abs(x)
+
+   > Returns the absolute value of x.
+
+2. acos(x)
+
+   > Returns the arccosine of x, in radians.
+
+3. acosh(x)
+
+   > Returns the hyperbolic arccosine of x.
+
+4. asin(x)
+
+   > Returns the arcsine of x, in radians.
+
+5. asinh(x)
+
+   > Returns the hyperbolic arcsine of x.
+
+6. atan(x)
+
+   > Returns the arctangent of x as a numeric value between -PI/2 and PI/2 radians.
+
+7. atan2(y, x)
+
+   > Returns the arctangent of the quotient of its arguments.
+
+8. atanh(x)
+
+   > Returns the hyperbolic arctangent of x.
+
+9. cbrt(x)
+
+   > Returns the cubic root of x.
+
+10. ceil(x)
+
+    > Returns x, rounded upwards to the nearest integer.
+
+11. cos(x)
+
+    > Returns the cosine of x (x is in radians).
+
+12. cosh(x)
+
+    > Returns the hyperbolic cosine of x.
+
+13. exp(x)
+
+    > Returns the value of Ex.
+
+14. floor(x)
+
+    > Returns x, rounded downwards to the nearest integer.
+
+15. log(x)
+
+    > Returns the natural logarithm (base E) of x.
+
+16. max(x, y, z, ..., n)
+
+    > Returns the number with the highest value.
+
+17. min(x, y, z, ..., n)
+
+    > Returns the number with the lowest value.
+
+18. pow(x, y)
+
+    > Returns the value of x to the power of y.
+
+19. random()
+
+    > Returns a random number between 0 and 1.
+
+20. round(x)
+
+    > Rounds x to the nearest integer.
+
+21. sign(x)
+
+    > Returns if x is negative, null or positive (-1, 0, 1).
+
+22. sin(x)
+
+    > Returns the sine of x (x is in radians).
+
+23. sinh(x)
+
+    > Returns the square root of x.
+
+24. sqrt(x)
+
+    > Returns the square root of x.
+
+25. tan(x)
+
+    > Returns the tangent of an angle.
+
+26. tanh(x)
+
+    > Returns the hyperbolic tangent of a number.
+
+27. trunc(x)
+
+    > Returns the integer part of a number (x).
