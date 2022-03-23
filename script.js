@@ -1,182 +1,220 @@
-// Objects in Detail
+// Date and Math Object
 
-/* Objects are the most important data type and the building block of JavaScript. Objects are used to
-store collection of data in more complex entities. The object can contain any data type of it. 
-It can contain string, numbers or any other data types. Objects is an unorder collection of related 
-data in form of key and value pairs. */
+// JavaScript Date Objects
+/* Date objects are created with the new Date() constructor.
+There are 4 ways to create a new date object. */
 
-const person = {
-  firstName: "Adrian",
-  lastName: "Hajdin",
-  age: 24,
-};
+// 1) new Date(): Creates a new date object with the current date and time.
+const date = new Date();
+console.log(date); //Tue Mar 22 2022 12:21:27 GMT+0530 (India Standard Time)
 
-console.log(person);
+/* 2) new Date(year, month, ...): Creates a new date object with a specified date and time.
+7 numbers specify year, month, day, hour, minute, second, and millisecond (in that order): */
+const specificDate = new Date(2022, 02, 29);
+console.log(specificDate); //Tue Mar 29 2022 00:00:00 GMT+0530 (India Standard Time)
 
-// Nested objects: Nested objects are the objects that are inside an another object.
-// Example:-
-const user1 = {
-  firstName: "Saish",
-  lastName: "Jagtap",
-  age: 20,
-  // nested object
-  car: {
-    brand: "Toyota",
-    year: 2022,
-    color: "grey",
-  },
-};
+// 3) new Date(dateString): Creates a new date object from a date string.
+const dateString = new Date("March 29, 2022 12:12:12");
+console.log(dateString); //Tue Mar 29 2022 12:12:12 GMT+0530 (India Standard Time)
 
-console.log(user1);
+// 4) new Date(milliseconds): Creates a new date object as zero time plus milliseconds.
+const milisec = new Date(0);
+console.log(milisec); //Thu Jan 01 1970 05:30:00 GMT+0530 (India Standard Time)
 
-// Accessing, Adding and Updating properties of an Object.
-/*
-To access, add or update a property of an object used dot notation and bracket notation. 
-It allows us to retrieve some values from an object.
+// 01 January 1970 plus 100 000 000 000 milliseconds is approximately 03 March 1973:
+const plus = new Date(100000000000);
+console.log(plus); //Sat Mar 03 1973 15:16:40 GMT+0530 (India Standard Time)
 
-Dot (.) Notation:
-                The most common way of accessing object properties is through dot 
-notation. Use a dot followed by property name to access its value.
-Note:- This type of access works only if tyhe property names (keys) are 'strings' 
-without any space. 
-eg. */
-const user2 = {
-  name: "Saish",
-  age: 21,
-  "working location": "Mumbai",
-};
+// January 01 1970 minus 100 000 000 000 milliseconds is approximately October 31 1966:
+const minus = new Date(-100000000000);
+console.log(minus); //Mon Oct 31 1966 19:43:20 GMT+0530 (India Standard Time)
 
-console.log(user2.name); //Saish
-console.log(user2.age); //21
-// console.log(user2.working location)  -> it only works in bracket notation, otherwise get error
+// One day (24 hours) is 86 400 000 milliseconds.
+const oneday = new Date(86400000);
+console.log(oneday); //Fri Jan 02 1970 05:30:00 GMT+0530 (India Standard Time)
 
-// Also change the value of a property
-user2.age = 22; //updating the value
-console.log(user2.age); //22
+// JavaScript Date Input
+/* There are generally 3 types of JavaScript date input fromats.
+ISO Date -> "2022-03-22" (The International Standard)
+Short Date -> "03/22/2022"
+Long Date -> "Mar 22 2022" or "22 Mar 2022" */
 
-/*
-Bracket ([]) Notation:
-                      The most preferred way of accessing object values are through 
-bracket notation.
-Note:- This access to all types of keys which can be used in objects. Numbers, 
-Strings (with or without space), even variables containing object property name can 
-be used in this notation.
-eg. */
-const user3 = {
-  name: "Adrain",
-  age: 25,
-  "working location": "Pune",
-};
+// Get Date Methods
 
-console.log(user3["name"]); //Adrain
-console.log(user3["working location"]); //Pune
+const newDate = new Date();
+// 1) getFullYear(): Get the year as a four digit number (yyyy).
+const fullYear = newDate.getFullYear();
+console.log(fullYear); //2022
+//OR
+console.log(newDate.getFullYear()); //2022
 
-// Also update or change the property value
-user3["name"] = "John";
-console.log(user3["name"]); //John
+// 2) getMonth(): Get the month as a number (0-11).
+console.log(newDate.getMonth()); //2
 
-// Object Methods
-/* JavaScript objects may have property values that functions. These are referred 
-to as object methods. Methods may be defined using anonymous arrow function 
-expression, or with shorthand method syntax. */
+// 3) getDate(): Get the date as a number (1-31).
+console.log(newDate.getDate()); //22
 
-const myObj = {
-  method: () => {
-    console.log("Method 1");
-  },
-  myMethod2: function () {
-    console.log("Method 2");
-  },
-  myMethod3() {
-    console.log("Method 3");
-  },
-};
+// 4) getHours(): Get the hour (0-23).
+console.log(newDate.getHours()); //12
 
-// Use any one to create a method
-myObj.method(); //Method 1
-myObj.myMethod2(); //Method 2
-myObj.myMethod3(); //Method 3
+// 5) getMinutes(): Get the minute (0-59).
+console.log(newDate.getMinutes()); //56
 
-// Object Methods:
-/* All objects in JavaScript the send from the parent object constructor and that 
-object constructor has many built-in methods, use an access to make working with 
-individual object straightforward. */
+// 6) getTime(): Get the time (miliiseconds since 1 January 1970).
+console.log(newDate.getTime()); //1647934055700
 
-/* 1) Object.keys():
-                    It creates an array containing the keys of an object. */
-const employees = {
-  boss: "Adrian",
-  secretary: "Tom",
-  sales: "John",
-  accountant: "Jim",
-};
+// 7) getDay(): Get the weekday as a number (0-6).
+console.log(newDate.getDay()); //2
 
-const positions = Object.keys(employees);
-console.log(positions); //['boss', 'secretary', 'sales', 'accountant']
+// 8) Date.now(): Get the time ECMAScript5. It returns the number of milliseconds since 1 January 1970.
+const date1 = Date.now();
+console.log(date1); //1647934435765
 
-/* Object.keys():- transformed all the keys of an object and put them in the array. */
+// 9) getSeconds(): Get the second (0-59).
+console.log(newDate.getSeconds()); //56
 
-/* 2) Object.values():
-                      It creates an array containing the values of an object. */
-const session = {
-  id: 1,
-  time: `21-March-2022`,
-  device: "mobile",
-  browser: "Firefox",
-};
+// 10) getMilliseconds(): Get the millisecond (0-999).
+console.log(newDate.getMilliseconds()); //965
 
-const sessionInfo = Object.values(session);
-console.log(sessionInfo); //[1, '21-March-2022', 'mobile', 'Firefox']
+// UTC Date Methods
+// UTC date methods are used for working with UTC dates (Universal Time Zone dates).
 
-/* 3) Object.entries():
-                      It creates a nested array of the key/value pairs of an object. */
-const operatingSystem = {
-  name: "ChromeOS",
-  version: 99,
-};
+// 1) getUTCDate(): Returns the date of the month according to universal time (from 1-31).
+console.log(newDate.getUTCDate()); //22
 
-const entries = Object.entries(operatingSystem);
-console.log(entries); //[Array(2), Array(2)]
-// ['name', 'ChromeOS']
-// ['version', 99]
+// 2) getUTCDay(): Returns the day of the week according to universal time (from 0-6).
+console.log(newDate.getUTCDay()); //2
 
-/* These array contain each one has a key and the value stored in a new array.
-Eg. name and ChromeOS stored in one array and version and 99 stored in another 
-array.
-Each key and value pair get stored in a new array. */
+// 3) getUTCFullYear(): Returns the year, according to universal time.
+console.log(newDate.getUTCFullYear()); //2022
 
-/* Object.freeze():
-                  It prevents modification to properties and values of an object and
-prevents properties from being added or removed from an object. */
+// 4) getUTCMonth(): Returns the month according to universal time (from 0-11).
+console.log(newDate.getUTCMonth()); //2
 
-// Eg. Never want to change a username.
-const user = {
-  username: "admin",
-  password: 12345678,
-};
+// 5) getUTCHours(): Returns the hour according to universal time (from 0-23).
+console.log(newDate.getUTCHours()); //8
 
-const admin = Object.freeze(user);
+// 6) getUTCMinutes(): Returns the minutes, according to universal time (from 0-59).
+console.log(newDate.getUTCMinutes()); //25
 
-admin.username = "saish";
+// 7) getUTCSeconds(): Returns the seconds, according to universal time (from 0-59).
+console.log(newDate.getUTCSeconds()); //29
 
-console.log(admin); //{username: 'admin', password: 12345678}
+// 8) getUTCMilliseconds(): Returns the milliseconds, according to universal time (from 0-999).
+console.log(newDate.getUTCMilliseconds()); //938
 
-/* properties remain the same, that means that no one can change the username. */
+// Math Object
+/* The JavaScript Math object allows to perform mathematical tasks on numbers. The Math object has no constructor. */
 
-/* 5) Object.seal():
-                    It prevents new properties from being added to an object, but 
-allows the modification of existing properties. */
-const details = {
-  username: "saish",
-  password: 12345678,
-};
+// 1) Math.abs(): Returns the absolute (positive) value of x.
+const absolute = Math.abs(-7.2);
+console.log(absolute); //7.2
 
-const newUser = Object.seal(details);
+// 2) Math.acos(): Returns the arccosine of a number as a value between 0 and PI radians.
+const cosine = Math.acos(0.2);
+console.log(cosine); //1.369438406004566
 
-newUser.password = "abcdef";
-newUser.active = true;
+// 3) Math.acosh(): Returns the hyperbolic arccosine of a number.
+const arccosine = Math.acosh(2);
+console.log(arccosine); //1.3169578969248166
 
-console.log(newUser);
+// 4) Math.asin(): Returns the arcsine of a number as a value between -PI/2 and PI/2 radians.
+const arcsine = Math.asin(0.5);
+console.log(arcsine); //0.5235987755982989
 
-/* The password changed from 12345678 to "abcdef", but the new active property 
-wasn't added, because the object was sealed. */
+// 5) Math.asinh(): Returns the hyperbolic arcsine of a number.
+const sinehyperbolic = Math.asinh(1);
+console.log(sinehyperbolic); //0.881373587019543
+
+// 6) Math.atan(): Returns the arctangent of a number as a value between -PI/2 and PI/2 radians.
+const tangent = Math.atan(2);
+console.log(tangent); //1.1071487177940904
+
+// 7) Math.atan2(y, x): Returns the arctangent of the quotient of its arguments.
+const num = Math.atan2(10, 4);
+console.log(num); //1.1902899496825317
+
+// 8) Math.atanh(x): Returns the hyperbolic arctangent of a number.
+const x = Math.atanh(0.5);
+console.log(x); //0.5493061443340548
+
+// 9) cbrt(x): Returns the cubic root of a number.
+const cuberoot = Math.cbrt(125);
+console.log(cuberoot); //5
+
+// 10) ceil(x): The Math.ceil() method rounds a number upwards to the nearest integer, and returns the result.
+const upward = Math.ceil(1.49);
+console.log(upward); //2
+
+// 11) cos(x): Returns the cosine of a number.
+const num1 = Math.cos(3);
+console.log(num1); //-0.9899924966004454
+
+// 12) cosh(x): Returns the hyperbolic cosine of a number.
+const num2 = Math.cosh(3);
+console.log(num2); //10.067661995777765
+
+// 13) exp(x): Returns the value of E^x, where E is Euler's number (approximately 2.7183).
+const euler = Math.exp(3);
+console.log(euler); //20.085536923187668
+
+// 14) floor(x): This method rounds a number downwards to the nearest integer.
+const first = Math.floor(0.6);
+console.log(first); //0
+
+// 15) log(x): Returns the natural logarithm (base E) of a number.
+const logarithm = Math.log(2);
+console.log(logarithm); //0.6931471805599453
+
+// 16) max(x, y, z, ..., n): Returns the number with heighest value.
+const heighest = Math.max(5, 10);
+console.log(heighest); //10
+
+// 17) min(x, y, z, ..., n): Returns the number with the lowest value.
+const lowest = Math.min(5, 10);
+console.log(lowest); //5
+
+// 18) pow(x, y): Returns the value of x to the power of y (x^y).
+const power = Math.pow(2, 2);
+console.log(power); //4
+
+// 19) random(): Returns the random number betwen 0 and 1.
+const randomNumber = Math.random();
+console.log(randomNumber); //0.6669267798976142
+
+// 20) round(x): This method rounds a number to the nearest integer.
+// Note: 2.49 will be rounded down (2) and 2,5 will be rounded up (3).
+const roundNumber = Math.round(2.5);
+console.log(roundNumber); //3
+
+// 21) sign(x): Returns whether a number is negative, positive or zero.
+/* If the number is positive, this method return 1.
+If the number is negative, it returns -1.
+If the number is zero, it returns 0. */
+const num3 = Math.sign(3);
+console.log(num3); //1
+
+// 22) sin(x): Returns the sine of x (x is in radians).
+const sine = Math.sin(3);
+console.log(sine); //0.1411200080598672
+
+// 23) sinh(x): Returns the hyperbolic sine of a number.
+const num4 = Math.sinh(4);
+console.log(num4); //27.28991719712775
+
+// 24) sqrt(x): Returns the square root of a number.
+const squareRoot = Math.sqrt(3);
+console.log(squareRoot); //1.7320508075688772
+
+// 25) tan(x): Returns the tangent of a number.
+const num5 = Math.tan(1);
+console.log(num5); //1.5574077246549023
+
+// 26) tanh(x): Returns the hyperbolic tangent of a number.
+const num6 = Math.tanh(4);
+console.log(num6); //0.999329299739067
+
+// 27) trunc(x): It returns the integer part of a number.
+// Note: This method will not round the number up/down to the nearest integer, but simply remove the decimals.
+const removeDecimal = Math.trunc(8.64);
+console.log(removeDecimal); //8

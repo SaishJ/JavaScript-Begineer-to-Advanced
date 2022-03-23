@@ -1,63 +1,94 @@
-# Objects in Detail
+# Date and Math Object
 
-## Introduction to Object
+## JavaScript Date Objects
 
-> An object is a built-in data type for storing key-value pairs. Data inside objects are unordered, and the values can be of any type.
+> **Date Objects** are created with the new Date() constructor. There are 4 ways to create a new date object.
 
 ```javascript
-object = {
-  property1: value1,
-  property2: value2,
-  .
-  .
-  .
-  propertN: valueN
-}
+new Date()
+new Date(year, month, day, hour, minutes, seconds, milliseconds)
+new Date(milliseconds)
+new Date(date string)
 ```
 
-## Accessing, Adding and Updating properties of an Object
+## JavaScript Date Input
 
-> There are 2 types of accessing an object properties.
+> There are 3 types of JavaScript date input formats:
 
-- **Dot Notation**
-- **Bracket Notation**
+|    Type    |                 Example                  |
+| :--------: | :--------------------------------------: |
+|  ISO Date  | "2022-02-22"(The International Standard) |
+| Short Date |               "03/22/2022"               |
+| Long Date  |      "Mar 22 2022" or "22 Mar 2022"      |
 
-- Dot Notation
+## Get Date Methods
 
-  > The most common way of accessing object properties is through a dot notation. Use a `.` (dot) followed by the property name to access its value.
+1. getFullYear()
 
-- Bracket Notation
+   > Get the year as a four digit number (yyyy).
 
-  > The most preferred way of accessing object values are through bracket notation. It access all types of keys which can be used in objects _Eg. Numbers, string (with or without spaces), etc._
+2. getMonth()
 
-## Object Methods
+   > Get the month as a number (0-11).
 
-> JavaScript **Objects** may have property values that are functions. These are referred to as object nethods. Methods may be defined using anonymous arrow function expressions, or with shorthand method syntax.
+3. getDate()
 
-## Object Built-in-Methods
+   > Get the date as a number (1-31).
 
-1. **Object.keys()**
-2. **Object.values()**
-3. **Object.entries()**
-4. **Object.freeze()**
-5. **Object.seal()**
+4. getHours()
 
-- Object.keys()
+   > Get the hour (0-23).
 
-  > It creates an array containing the keys of an object.
+5. getMinutes()
 
-- Object.values()
+   > Get the minute (0-59).
 
-  > It creates an array containing the values of an object.
+6. getTime()
 
-- Object.entries()
+   > Get the time (miliiseconds since 1 January 1970).
 
-  > It creates a nested array of the key/value pairs of an object.
+7. getDay()
 
-- Object.freeze()
+   > Get the weekday as a number (0-6).
 
-  > It prevents modification to properties and values of an object.
+8. Date.now()
 
-- Object.seal()
+   > It returns the number of milliseconds since 1 January 1970.
 
-  > It prevents new properties from being added to an object, but allows the modification of existing properties.
+9. getSeconds()
+
+   > Get the second (0-59).
+
+10. getMilliseconds()
+
+    > Get the millisecond (0-999).
+
+## Set Date Methods
+
+1. setDate()
+
+   > Set the day as a number (1-31).
+
+2. setfullYear()
+
+   > Set the year (optionally month and date).
+
+3. setMonth()
+
+   > Set the month (0-11).
+
+4. setHours()
+
+   > Set the hour (0-23).
+
+5. setMinutes()
+
+   > Set the minutes (0-59).
+
+6. setSeconds()
+
+   > Set the seconds (0-59).
+
+7. setMilliseconds()
+
+   > Set the milliseconds (0-999).
