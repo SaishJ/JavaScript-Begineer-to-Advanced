@@ -1,220 +1,211 @@
-// Date and Math Object
+// Value vs Reference
 
-// JavaScript Date Objects
-/* Date objects are created with the new Date() constructor.
-There are 4 ways to create a new date object. */
+// There are different data types are passed either by their value or by their reference.
 
-// 1) new Date(): Creates a new date object with the current date and time.
-const date = new Date();
-console.log(date); //Tue Mar 22 2022 12:21:27 GMT+0530 (India Standard Time)
+/* Pass by Value:
+                In JavaScript, Primitive data types are passed by copy of thier value. 
+These primitive types are Numbers, Strings, Boolean, Null and Undefined. */
 
-/* 2) new Date(year, month, ...): Creates a new date object with a specified date and time.
-7 numbers specify year, month, day, hour, minute, second, and millisecond (in that order): */
-const specificDate = new Date(2022, 02, 29);
-console.log(specificDate); //Tue Mar 29 2022 00:00:00 GMT+0530 (India Standard Time)
+let a = 10;
+let b = a; //now 'b' is 10
 
-// 3) new Date(dateString): Creates a new date object from a date string.
-const dateString = new Date("March 29, 2022 12:12:12");
-console.log(dateString); //Tue Mar 29 2022 12:12:12 GMT+0530 (India Standard Time)
+a = 20; //update variable 'a' 10 to 20
 
-// 4) new Date(milliseconds): Creates a new date object as zero time plus milliseconds.
-const milisec = new Date(0);
-console.log(milisec); //Thu Jan 01 1970 05:30:00 GMT+0530 (India Standard Time)
+console.log(a); //20
+console.log(b); //10
 
-// 01 January 1970 plus 100 000 000 000 milliseconds is approximately 03 March 1973:
-const plus = new Date(100000000000);
-console.log(plus); //Sat Mar 03 1973 15:16:40 GMT+0530 (India Standard Time)
+/* Explanation:
+                The value of variable 'a' is copied and assigned to variable 'b'. This means
+that these variables are separate with no relationship with each other. Due to this, changing 
+one variable's value doesn't change the other. */
 
-// January 01 1970 minus 100 000 000 000 milliseconds is approximately October 31 1966:
-const minus = new Date(-100000000000);
-console.log(minus); //Mon Oct 31 1966 19:43:20 GMT+0530 (India Standard Time)
+/* Pass by Reference:
+                    A variable is assigned a non-primitive value (such as an object, an array, 
+or a function), it is given a reference to that object's location in memory. */
 
-// One day (24 hours) is 86 400 000 milliseconds.
-const oneday = new Date(86400000);
-console.log(oneday); //Fri Jan 02 1970 05:30:00 GMT+0530 (India Standard Time)
+const person = {
+  firstName: "Saish",
+  lastName: "Jagtap",
+};
 
-// JavaScript Date Input
-/* There are generally 3 types of JavaScript date input fromats.
-ISO Date -> "2022-03-22" (The International Standard)
-Short Date -> "03/22/2022"
-Long Date -> "Mar 22 2022" or "22 Mar 2022" */
+const otherPerson = person; //-> {firstName: 'Saish', lastName: 'Jagtap'}
 
-// Get Date Methods
+person.firstName = "Adrian"; //-> Update the first name of the person 'Saish' to 'Adrian'
 
-const newDate = new Date();
-// 1) getFullYear(): Get the year as a four digit number (yyyy).
-const fullYear = newDate.getFullYear();
-console.log(fullYear); //2022
-//OR
-console.log(newDate.getFullYear()); //2022
+console.log(person); //{firstName: 'Adrian', lastName: 'Jagtap'}
+console.log(otherPerson); //{firstName: 'Adrian', lastName: 'Jagtap'}
 
-// 2) getMonth(): Get the month as a number (0-11).
-console.log(newDate.getMonth()); //2
+/* Explanation:
+                The variable otherPerson doesn't actually contain the value {firstName: 'Saish', lastName: 'Jagtap'}, 
+instead it points to a location in memory where that value is stored. */
 
-// 3) getDate(): Get the date as a number (1-31).
-console.log(newDate.getDate()); //22
+// const otherPerson = person;
+/* When a reference type value is copied to another variable, like otherPerson, the object is copied by reference 
+instead of value. In simple term, person and otherPerson don't have their own copy of the value. They point to the
+same location in memory. */
 
-// 4) getHours(): Get the hour (0-23).
-console.log(newDate.getHours()); //12
+/* person.firstName = "Adrian";
+   
+   console.log(person);
+   console.log(otherPerson); */
 
-// 5) getMinutes(): Get the minute (0-59).
-console.log(newDate.getMinutes()); //56
+/* When a new item is pushed to person, the array in memory is modified, and as a result the variable otherPerson also
+reflects that change. It never actually making a copy of a person object. It just make a variable that points to the
+same location in the memory. */
 
-// 6) getTime(): Get the time (miliiseconds since 1 January 1970).
-console.log(newDate.getTime()); //1647934055700
+// Example:- Same location in memory prove using equality check.
 
-// 7) getDay(): Get the weekday as a number (0-6).
-console.log(newDate.getDay()); //2
+const object = {
+  name: "square",
+};
 
-// 8) Date.now(): Get the time ECMAScript5. It returns the number of milliseconds since 1 January 1970.
-const date1 = Date.now();
-console.log(date1); //1647934435765
+const otherObject = {
+  name: "square",
+};
 
-// 9) getSeconds(): Get the second (0-59).
-console.log(newDate.getSeconds()); //56
+console.log(object === otherObject); //FALSE
 
-// 10) getMilliseconds(): Get the millisecond (0-999).
-console.log(newDate.getMilliseconds()); //965
+/* Explanation:
+                object === otherObject is resolve to 'true', but that isn't the case. The reason is that object and 
+otherObject contain identical objects they still point to two distinct objects stored in different locations in memory. */
 
-// UTC Date Methods
-// UTC date methods are used for working with UTC dates (Universal Time Zone dates).
+const otherObject1 = object;
 
-// 1) getUTCDate(): Returns the date of the month according to universal time (from 1-31).
-console.log(newDate.getUTCDate()); //22
+console.log(object === otherObject1); //TRUE
 
-// 2) getUTCDay(): Returns the day of the week according to universal time (from 0-6).
-console.log(newDate.getUTCDay()); //2
+// Now, object and otherObject1 hold reference to the same location in memory, therefore conside to be equal.
 
-// 3) getUTCFullYear(): Returns the year, according to universal time.
-console.log(newDate.getUTCFullYear()); //2022
+// Shallow Clonning
+// Eg.
+const myObj1 = {
+  name: "John",
+  age: 21,
+};
+const myObj2 = myObj1;
+myObj2.name = "Saish";
 
-// 4) getUTCMonth(): Returns the month according to universal time (from 0-11).
-console.log(newDate.getUTCMonth()); //2
+console.log(myObj1); //{name: 'Saish', age: 21} -> ❌ The original object get affected.
+console.log(myObj2); //{name: 'Saish', age: 21} -> ✅
 
-// 5) getUTCHours(): Returns the hour according to universal time (from 0-23).
-console.log(newDate.getUTCHours()); //8
+/* Explanation:
+              Because objects are reference type (passed by reference) when use '=', the pointer to the memory address 
+of myObj1 is copied to myObj2. Not the actual value is copied.
+Reference type don't hold values they are pointer to the value in memory space. */
 
-// 6) getUTCMinutes(): Returns the minutes, according to universal time (from 0-59).
-console.log(newDate.getUTCMinutes()); //25
+// To clone object: use spread operator or Object.assign().
+// 1) Using Spread Operator (...):
+const item = {
+  name: "pen",
+  qty: 20,
+};
 
-// 7) getUTCSeconds(): Returns the seconds, according to universal time (from 0-59).
-console.log(newDate.getUTCSeconds()); //29
+const newItem = { ...item };
+newItem.qty = 40;
 
-// 8) getUTCMilliseconds(): Returns the milliseconds, according to universal time (from 0-999).
-console.log(newDate.getUTCMilliseconds()); //938
+console.log(item); //{name: 'pen', qty: 20} -> ✅ Original object 'item' is not change.
+console.log(newItem); //{name: 'pen', qty: 40} -> ✅
 
-// Math Object
-/* The JavaScript Math object allows to perform mathematical tasks on numbers. The Math object has no constructor. */
+// 2) Using the Object.assign():
+const item1 = {
+  pen: 10,
+  pencil: 20,
+};
+const item2 = Object.assign({}, item1);
+item2.pen = 40;
 
-// 1) Math.abs(): Returns the absolute (positive) value of x.
-const absolute = Math.abs(-7.2);
-console.log(absolute); //7.2
+console.log(item1); //{pen: 10, pencil: 20} -> ✅ Original object 'item1' is not change.
+console.log(item2); //{pen: 40, pencil: 20} -> ✅
 
-// 2) Math.acos(): Returns the arccosine of a number as a value between 0 and PI radians.
-const cosine = Math.acos(0.2);
-console.log(cosine); //1.369438406004566
+// To clone array: Using spread operator and Array.slice().
+// 1) Using Spread Operator (...):
+const numbers = [1, 2, 3, 4, 5];
+const newNumbers = [...numbers];
 
-// 3) Math.acosh(): Returns the hyperbolic arccosine of a number.
-const arccosine = Math.acosh(2);
-console.log(arccosine); //1.3169578969248166
+numbers.push(6);
 
-// 4) Math.asin(): Returns the arcsine of a number as a value between -PI/2 and PI/2 radians.
-const arcsine = Math.asin(0.5);
-console.log(arcsine); //0.5235987755982989
+console.log(numbers); //[1, 2, 3, 4, 5, 6]
+console.log(newNumbers); //[1, 2, 3, 4, 5]
 
-// 5) Math.asinh(): Returns the hyperbolic arcsine of a number.
-const sinehyperbolic = Math.asinh(1);
-console.log(sinehyperbolic); //0.881373587019543
+// 2) Using Array.slice():
+const num = [10, 20, 30, 40, 50];
+const newNum = num.slice();
 
-// 6) Math.atan(): Returns the arctangent of a number as a value between -PI/2 and PI/2 radians.
-const tangent = Math.atan(2);
-console.log(tangent); //1.1071487177940904
+num.push(60);
 
-// 7) Math.atan2(y, x): Returns the arctangent of the quotient of its arguments.
-const num = Math.atan2(10, 4);
-console.log(num); //1.1902899496825317
+console.log(num); //[10, 20, 30, 40, 50, 60]
+console.log(newNum); //[10, 20, 30, 40, 50]
 
-// 8) Math.atanh(x): Returns the hyperbolic arctangent of a number.
-const x = Math.atanh(0.5);
-console.log(x); //0.5493061443340548
+// Spread Operator:- The reference to the initial object gets deleted.
 
-// 9) cbrt(x): Returns the cubic root of a number.
-const cuberoot = Math.cbrt(125);
-console.log(cuberoot); //5
+// Deep Clonning
+const user = {
+  name: "Saish",
+  car: {
+    brand: "BMW",
+    color: "Grey",
+  },
+};
 
-// 10) ceil(x): The Math.ceil() method rounds a number upwards to the nearest integer, and returns the result.
-const upward = Math.ceil(1.49);
-console.log(upward); //2
+// copy object using spread operator.
 
-// 11) cos(x): Returns the cosine of a number.
-const num1 = Math.cos(3);
-console.log(num1); //-0.9899924966004454
+const newUser = { ...user };
+// This removes the reference from the original object.
 
-// 12) cosh(x): Returns the hyperbolic cosine of a number.
-const num2 = Math.cosh(3);
-console.log(num2); //10.067661995777765
+newUser.name = "Pratik";
 
-// 13) exp(x): Returns the value of E^x, where E is Euler's number (approximately 2.7183).
-const euler = Math.exp(3);
-console.log(euler); //20.085536923187668
+console.log(user);
+console.log(newUser);
+// Chnaging the newUser name 'Saish' to 'Pratik'.
 
-// 14) floor(x): This method rounds a number downwards to the nearest integer.
-const first = Math.floor(0.6);
-console.log(first); //0
+// Now changing the properties of Pratik's car.
+newUser.car.color = "Black";
 
-// 15) log(x): Returns the natural logarithm (base E) of a number.
-const logarithm = Math.log(2);
-console.log(logarithm); //0.6931471805599453
+console.log(user.car); //{brand: 'BMW', color: 'black'}
+console.log(newUser.car); //{brand: 'BMW', color: 'black'}
+/* It changes the colour of Pratik's car as well as 'Saish's' car. 
+They are both black. Although changed only the color of Pratik's car. 
 
-// 16) max(x, y, z, ..., n): Returns the number with heighest value.
-const heighest = Math.max(5, 10);
-console.log(heighest); //10
+This happens beacause, it only removed the reference from the outer 
+object.
 
-// 17) min(x, y, z, ..., n): Returns the number with the lowest value.
-const lowest = Math.min(5, 10);
-console.log(lowest); //5
+car is also an object, It also has its own reference.
 
-// 18) pow(x, y): Returns the value of x to the power of y (x^y).
-const power = Math.pow(2, 2);
-console.log(power); //4
+Need to remove reference from the inner object as well.
 
-// 19) random(): Returns the random number betwen 0 and 1.
-const randomNumber = Math.random();
-console.log(randomNumber); //0.6669267798976142
+Using the spread operator (but only works two levels deep).
 
-// 20) round(x): This method rounds a number to the nearest integer.
-// Note: 2.49 will be rounded down (2) and 2,5 will be rounded up (3).
-const roundNumber = Math.round(2.5);
-console.log(roundNumber); //3
+const newUser = {...user, car:{...user.car}}; 
 
-// 21) sign(x): Returns whether a number is negative, positive or zero.
-/* If the number is positive, this method return 1.
-If the number is negative, it returns -1.
-If the number is zero, it returns 0. */
-const num3 = Math.sign(3);
-console.log(num3); //1
+But, if it had more nested object need to spread everything. When, have 
+deeply nested object, need to create a deep clone.
 
-// 22) sin(x): Returns the sine of x (x is in radians).
-const sine = Math.sin(3);
-console.log(sine); //0.1411200080598672
+for an object to be a deep clone, it needs to destroy all the refernces.
 
-// 23) sinh(x): Returns the hyperbolic sine of a number.
-const num4 = Math.sinh(4);
-console.log(num4); //27.28991719712775
+There are two methods for deep clonning
+1) JSON.stringify
+2) JSON.parse 
+*/
 
-// 24) sqrt(x): Returns the square root of a number.
-const squareRoot = Math.sqrt(3);
-console.log(squareRoot); //1.7320508075688772
+// 1) JSON.stringify: It converts a JavaScript object or any value to a string, all the references are destroyed.
+const stringified = JSON.stringify(user);
+console.log(stringified);
+// {"name":"Saish","car":{"brand":"BMW","color":"black"}}
 
-// 25) tan(x): Returns the tangent of a number.
-const num5 = Math.tan(1);
-console.log(num5); //1.5574077246549023
+// 2) JSON.parse: Return stringify back to an object.
+const newUser1 = JSON.parse(stringified);
 
-// 26) tanh(x): Returns the hyperbolic tangent of a number.
-const num6 = Math.tanh(4);
-console.log(num6); //0.999329299739067
+// get an object, but an object that is a deep clone of the user object.
 
-// 27) trunc(x): It returns the integer part of a number.
-// Note: This method will not round the number up/down to the nearest integer, but simply remove the decimals.
-const removeDecimal = Math.trunc(8.64);
-console.log(removeDecimal); //8
+newUser1.name = "Prafulla";
+newUser1.car.color = "White";
+
+console.log(user);
+/*  {name: 'Saish', car: {…}}
+      car: {brand: 'BMW', color: 'Black'}
+      name: "Saish"
+*/
+console.log(newUser1);
+/*  {name: 'Prafulla', car: {…}}
+      car: {brand: 'BMW', color: 'White'}
+      name: "Prafulla" 
+*/
