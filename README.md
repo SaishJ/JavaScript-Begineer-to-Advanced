@@ -41,3 +41,5 @@ const newUser = JSON.parse(JSON.stringify(users));
 
 console.log(users === newUser); //false
 ```
+
+![Cloning](https://user-images.githubusercontent.com/59008917/159865668-4fdc399d-5dbe-4459-86ce-a5a787c01c83.png)
