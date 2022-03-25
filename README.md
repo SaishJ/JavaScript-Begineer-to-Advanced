@@ -101,9 +101,11 @@ document.querySelectorAll("h2.text");
   > The `previousElementSibling` property returns the previous element in the same tree levell.
 
 - `nextElementSibling`
+
   > The `nextElementSibling` property returns the next element in the same tree level.
 
 ### Removing
 
 - `remove()`
+
   > The `remove()` method removes an element (or node) from the document.
