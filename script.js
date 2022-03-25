@@ -1,211 +1,197 @@
-// Value vs Reference
+// DOM - Document Object Model
 
-// There are different data types are passed either by their value or by their reference.
+/* DOM stands for Document Object Model. The Document Object Model is the JavaScript standard to access
+and share document over the Internet. It allows to modify the web pages. It represents how a particular 
+document is structured and it also helps to modify the website. */
 
-/* Pass by Value:
-                In JavaScript, Primitive data types are passed by copy of thier value. 
-These primitive types are Numbers, Strings, Boolean, Null and Undefined. */
+// Selecting Elements
+// There are many ways to select an element.
 
-let a = 10;
-let b = a; //now 'b' is 10
+// Finding an HTML element by an ID.
+// This is the easiest and most effective way to find an element.
 
-a = 20; //update variable 'a' 10 to 20
+const el = document.getElementById("heading1");
+console.log(el); //<h1 id="heading1" class="text">Test1</h1>
 
-console.log(a); //20
-console.log(b); //10
+// Finding the element by tag name
+// To manipulate all elements of a particular kind. Manipulate all the headings in website.
+const tagName = document.getElementsByTagName("h1");
+console.log(tagName); //HTMLCollection(2) [h1#heading, h1#heading1, heading: h1#heading, heading1: h1#heading1]
 
-/* Explanation:
-                The value of variable 'a' is copied and assigned to variable 'b'. This means
-that these variables are separate with no relationship with each other. Due to this, changing 
-one variable's value doesn't change the other. */
+// Finding the element by class name
+// Class name are assigned to elements to style them uniquely.
 
-/* Pass by Reference:
-                    A variable is assigned a non-primitive value (such as an object, an array, 
-or a function), it is given a reference to that object's location in memory. */
+const className = document.getElementsByClassName("text");
+console.log(className); //HTMLCollection(2) [h1#heading.text, h1#heading1.text, heading: h1#heading.text, heading1: h1#heading1.text]
 
-const person = {
-  firstName: "Saish",
-  lastName: "Jagtap",
+// Finding elements by CSS selectors.
+// CSS selectors combine multiple classes, id, tag name, etc. to select a particular element.
+// To find all the <h2> that have a class of 'text'.
+
+const querySelect = document.querySelectorAll("h2.text");
+console.log(querySelect);
+/* NodeList [h2#heading2.text]
+   0: h2#heading2.text
+   length: 1 */
+
+/* Use querySelector to replace absolutely all other methods like getElementById,
+getElementByClassName, tagName.
+
+querySelector():- Use the querySelector to target only one specific element.
+querySelectorAll():- Use the querySelectorAll to target multiple elements. */
+
+// Target class element by using (.):
+const allClass = document.querySelectorAll(".text");
+console.log(allClass);
+/* NodeList(3) [h1#heading.text, h1#heading1.text, h2#heading2.text]
+   0: h1#heading.text
+   1: h1#heading1.text
+   2: h2#heading2.text */
+
+// Target id element by using (#):
+const allId = document.querySelectorAll("#heading1");
+console.log(allId);
+/* NodeList [h1#heading1.text]
+   0: h1#heading1.text */
+
+// Target element by tag name:
+const allTag = document.querySelectorAll("h1");
+console.log(allTag);
+/* NodeList(2) [h1#heading.text, h1#heading1.text]
+   0: h1#heading.text
+   1: h1#heading1.text */
+
+// Elements Properties and Methods.
+/* HTML elements have different attributes assigned to them like id, class, or types.
+They are standard attribute for different elements.
+Some attributes are applicable to all elements, and some are applicable to particular ones.
+for eg.:- ID or CLASS are applicable for all elements. TYPE property is applicable to input
+          elements and buttons only. */
+
+// Elements Properties
+const element = document.querySelector("#heading3");
+console.log(element); //<h3 id="heading3" class="text abc text">TEST</h3>
+
+// element.classList: Use classList to get access to all the class.
+const cl = element.classList;
+console.log(cl);
+/* DOMTokenList(3) ['text', 'abc', 'test', value: 'text abc test']
+   0: "text"
+   1: "abc"
+   2: "test" */
+
+// element.id: Get id of the element.
+const id = element.id;
+console.log(id); //heading3
+
+// element.innerHTML: Get the inner text of that element.
+const text = element.innerHTML;
+console.log(text); //TEST
+
+// Methods
+
+// Target the button
+const btn = document.querySelector("button");
+console.log(btn); //button
+
+const addEvent = btn.addEventListener("click", () => {
+  alert("CLICKED");
+});
+console.log(addEvent);
+
+const info = btn.getBoundingClientRect();
+// This returns a information of button.
+console.log(info); //DOMRect {x: 8, y: 127.84375, width: 57.5, height: 21, top: 127.84375, …}
+
+const attr = btn.hasAttribute("type");
+// Ith checks element has an attribute type or not.
+console.log(attr); //true
+
+const removeAttr = btn.removeAttribute("type");
+// It removes the attribute.
+console.log(removeAttr);
+// Check the hasAttribute is removed or not.
+console.log(btn.hasAttribute("type")); //false
+
+// Working with Classes
+// Use menu.html
+/* Classes are used to style element, by using JavaScript to do something to 
+elements with certainn class. */
+
+const menuClicked = (currEl) => {
+  // Target class by using className
+  const menuItems = document.getElementsByClassName("menu-item");
+
+  // Remove active class.
+  for (let i = 0; i < menuItems.length; i++) {
+    menuItems[i].classList.remove("active");
+  }
+
+  // When user click on menu list add active class.
+  currEl.classList.add("active");
 };
 
-const otherPerson = person; //-> {firstName: 'Saish', lastName: 'Jagtap'}
+// Creating, Traversing and Removing Node.
+// Creating:
+/* There are different ways to create an HTML element using JavaScript.
+The most used is document.createElement() method. */
 
-person.firstName = "Adrian"; //-> Update the first name of the person 'Saish' to 'Adrian'
+const heading = document.createElement("h4");
+console.log(heading); //<h4></h4>
 
-console.log(person); //{firstName: 'Adrian', lastName: 'Jagtap'}
-console.log(otherPerson); //{firstName: 'Adrian', lastName: 'Jagtap'}
+// It just create the lement but doesn't added to DOM.
+// To added to DOM use appendChild method. Add it to any element or the main body as well.
 
-/* Explanation:
-                The variable otherPerson doesn't actually contain the value {firstName: 'Saish', lastName: 'Jagtap'}, 
-instead it points to a location in memory where that value is stored. */
+// To target the body.
+const body = document.querySelector("body");
+console.log(body); //<body>...</body>
 
-// const otherPerson = person;
-/* When a reference type value is copied to another variable, like otherPerson, the object is copied by reference 
-instead of value. In simple term, person and otherPerson don't have their own copy of the value. They point to the
-same location in memory. */
+// To append child in body element
+const append = body.appendChild(heading);
+console.log(append); //<body><h4></h4></body>
 
-/* person.firstName = "Adrian";
-   
-   console.log(person);
-   console.log(otherPerson); */
+// To add text in it.
+const addText = (heading.innerText = "Hello, World!");
+console.log(addText); //Hello, World!
 
-/* When a new item is pushed to person, the array in memory is modified, and as a result the variable otherPerson also
-reflects that change. It never actually making a copy of a person object. It just make a variable that points to the
-same location in the memory. */
+// Traverse
+// Target all subjects:
+const sub = document.querySelector(".subjects");
+console.log(sub);
+/* <ul class="subjects">
+      <li>Maths</li>
+      <li>History</li>
+      <li class="fav-sub">English</li>
+    </ul> */
 
-// Example:- Same location in memory prove using equality check.
+// Target each thing specifically:
+// first element in the list:-
+const firstSub = sub.firstElementChild;
+console.log(firstSub);
+/* <li>Maths</li> */
 
-const object = {
-  name: "square",
-};
+// last element in the list:-
+const lastSub = sub.lastElementChild;
+console.log(lastSub);
+/* <li class="fav-sub">English</li> */
 
-const otherObject = {
-  name: "square",
-};
+// Target to fav-subjects
+const favSub = document.querySelector(".fav-sub");
+console.log(favSub);
+/* <li class="fav-sub">English</li> */
 
-console.log(object === otherObject); //FALSE
+const prevSub = favSub.previousElementSibling;
+// It give us previous sibling in the list.
+console.log(prevSub);
+/* <li>History</li> */
 
-/* Explanation:
-                object === otherObject is resolve to 'true', but that isn't the case. The reason is that object and 
-otherObject contain identical objects they still point to two distinct objects stored in different locations in memory. */
+const nextSub = firstSub.nextElementSibling;
+// It give us the next one in the list.
+console.log(nextSub);
+/* <li>History</li> */
 
-const otherObject1 = object;
+// Removing
+// Remove the favourite subject.
 
-console.log(object === otherObject1); //TRUE
-
-// Now, object and otherObject1 hold reference to the same location in memory, therefore conside to be equal.
-
-// Shallow Clonning
-// Eg.
-const myObj1 = {
-  name: "John",
-  age: 21,
-};
-const myObj2 = myObj1;
-myObj2.name = "Saish";
-
-console.log(myObj1); //{name: 'Saish', age: 21} -> ❌ The original object get affected.
-console.log(myObj2); //{name: 'Saish', age: 21} -> ✅
-
-/* Explanation:
-              Because objects are reference type (passed by reference) when use '=', the pointer to the memory address 
-of myObj1 is copied to myObj2. Not the actual value is copied.
-Reference type don't hold values they are pointer to the value in memory space. */
-
-// To clone object: use spread operator or Object.assign().
-// 1) Using Spread Operator (...):
-const item = {
-  name: "pen",
-  qty: 20,
-};
-
-const newItem = { ...item };
-newItem.qty = 40;
-
-console.log(item); //{name: 'pen', qty: 20} -> ✅ Original object 'item' is not change.
-console.log(newItem); //{name: 'pen', qty: 40} -> ✅
-
-// 2) Using the Object.assign():
-const item1 = {
-  pen: 10,
-  pencil: 20,
-};
-const item2 = Object.assign({}, item1);
-item2.pen = 40;
-
-console.log(item1); //{pen: 10, pencil: 20} -> ✅ Original object 'item1' is not change.
-console.log(item2); //{pen: 40, pencil: 20} -> ✅
-
-// To clone array: Using spread operator and Array.slice().
-// 1) Using Spread Operator (...):
-const numbers = [1, 2, 3, 4, 5];
-const newNumbers = [...numbers];
-
-numbers.push(6);
-
-console.log(numbers); //[1, 2, 3, 4, 5, 6]
-console.log(newNumbers); //[1, 2, 3, 4, 5]
-
-// 2) Using Array.slice():
-const num = [10, 20, 30, 40, 50];
-const newNum = num.slice();
-
-num.push(60);
-
-console.log(num); //[10, 20, 30, 40, 50, 60]
-console.log(newNum); //[10, 20, 30, 40, 50]
-
-// Spread Operator:- The reference to the initial object gets deleted.
-
-// Deep Clonning
-const user = {
-  name: "Saish",
-  car: {
-    brand: "BMW",
-    color: "Grey",
-  },
-};
-
-// copy object using spread operator.
-
-const newUser = { ...user };
-// This removes the reference from the original object.
-
-newUser.name = "Pratik";
-
-console.log(user);
-console.log(newUser);
-// Chnaging the newUser name 'Saish' to 'Pratik'.
-
-// Now changing the properties of Pratik's car.
-newUser.car.color = "Black";
-
-console.log(user.car); //{brand: 'BMW', color: 'black'}
-console.log(newUser.car); //{brand: 'BMW', color: 'black'}
-/* It changes the colour of Pratik's car as well as 'Saish's' car. 
-They are both black. Although changed only the color of Pratik's car. 
-
-This happens beacause, it only removed the reference from the outer 
-object.
-
-car is also an object, It also has its own reference.
-
-Need to remove reference from the inner object as well.
-
-Using the spread operator (but only works two levels deep).
-
-const newUser = {...user, car:{...user.car}}; 
-
-But, if it had more nested object need to spread everything. When, have 
-deeply nested object, need to create a deep clone.
-
-for an object to be a deep clone, it needs to destroy all the refernces.
-
-There are two methods for deep clonning
-1) JSON.stringify
-2) JSON.parse 
-*/
-
-// 1) JSON.stringify: It converts a JavaScript object or any value to a string, all the references are destroyed.
-const stringified = JSON.stringify(user);
-console.log(stringified);
-// {"name":"Saish","car":{"brand":"BMW","color":"black"}}
-
-// 2) JSON.parse: Return stringify back to an object.
-const newUser1 = JSON.parse(stringified);
-
-// get an object, but an object that is a deep clone of the user object.
-
-newUser1.name = "Prafulla";
-newUser1.car.color = "White";
-
-console.log(user);
-/*  {name: 'Saish', car: {…}}
-      car: {brand: 'BMW', color: 'Black'}
-      name: "Saish"
-*/
-console.log(newUser1);
-/*  {name: 'Prafulla', car: {…}}
-      car: {brand: 'BMW', color: 'White'}
-      name: "Prafulla" 
-*/
+const removeFavSub = favSub.remove();
+console.log(removeFavSub);
