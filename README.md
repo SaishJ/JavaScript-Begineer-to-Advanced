@@ -12,3 +12,4 @@
 ### [09- Objects in Detail](https://github.com/SaishJ/JavaScript-Begineer-to-Advanced/tree/09-Objects_in_Detail)
 ### [10- Date and Math Object](https://github.com/SaishJ/JavaScript-Begineer-to-Advanced/tree/10-Date_and_Math_Object)
 ### [11- Value vs Reference](https://github.com/SaishJ/JavaScript-Begineer-to-Advanced/tree/11-Value_vs_Reference)
+### [12- Document Object Model (DOM)](https://github.com/SaishJ/JavaScript-Begineer-to-Advanced/tree/12-Document_Object_Model)
