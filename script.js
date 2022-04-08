@@ -1,197 +1,148 @@
-// DOM - Document Object Model
+// Classes, this and new keyword
 
-/* DOM stands for Document Object Model. The Document Object Model is the JavaScript standard to access
-and share document over the Internet. It allows to modify the web pages. It represents how a particular 
-document is structured and it also helps to modify the website. */
+/* The "new" keyword:
+               The 'new' keyword create an instances of a user-defined object type or of one of the
+built-in object types that has a constructor function.
 
-// Selecting Elements
-// There are many ways to select an element.
+Syntax:- 
+      new constructor(arguments)
+◾ constructor:- A class or function that specifies the type of object instance.
+◾ arguments:- A list of values that the constructor will be called with.
 
-// Finding an HTML element by an ID.
-// This is the easiest and most effective way to find an element.
+Description:-
+            The 'new' keyword does the following things:
+1) Creates a blank, plain JavaScript object.
+2) Adds a property to the new object that takes links to the constructor functions property object. */
 
-const el = document.getElementById("heading1");
-console.log(el); //<h1 id="heading1" class="text">Test1</h1>
+// Ex.:
+const myDate = new Date();
+console.log(myDate); //Tue Apr 05 2022 20:35:06 GMT+0530 (India Standard Time)
+console.log(myDate.getFullYear()); //2022
 
-// Finding the element by tag name
-// To manipulate all elements of a particular kind. Manipulate all the headings in website.
-const tagName = document.getElementsByTagName("h1");
-console.log(tagName); //HTMLCollection(2) [h1#heading, h1#heading1, heading: h1#heading, heading1: h1#heading1]
+// JavaScript also provides constructor functions for many built-in objects, like the 'Date' object.
 
-// Finding the element by class name
-// Class name are assigned to elements to style them uniquely.
+/* The "this" keyword:
+Ex.
+const person = {
+      firstName: "Saish",
+      lastName: "Jagtap",
+      id: "1",
+      fullName: function() {
+            return this.firstName + " " + this.lastName;
+      }
+}
+What is this ?
+The "this" keyword refers to an object. Which object depends on how 'this' is being used or called (invoked).
+The 'this' keyword refers to different objects depending on how it is used.
 
-const className = document.getElementsByClassName("text");
-console.log(className); //HTMLCollection(2) [h1#heading.text, h1#heading1.text, heading: h1#heading.text, heading1: h1#heading1.text]
+▪ In an object method, "this" refers to the object.
+▪ Alone, "this" refers to the global object.
+▪ In a function, "this" refers to the global object.
+▪ In a function, in strict mode, "this" is undefined.
+▪ In an event, "this" refers to the element that received the event.
+▪ Method like call(), apply(), and bind() can refer "this" to any object.
 
-// Finding elements by CSS selectors.
-// CSS selectors combine multiple classes, id, tag name, etc. to select a particular element.
-// To find all the <h2> that have a class of 'text'.
+Note:-
+      "this" is not a variable. It is keyword. The value of "this" cannot be change.
 
-const querySelect = document.querySelectorAll("h2.text");
-console.log(querySelect);
-/* NodeList [h2#heading2.text]
-   0: h2#heading2.text
-   length: 1 */
+1) "this" in a method:
+                  When "this" used in an object method, it refers to the object. In an above example, "this" refers
+to the person object. Because the fullName method is a method of the person object.
+fullName: function() {
+      return this.firstName + " " + this.lastName;
+}
 
-/* Use querySelector to replace absolutely all other methods like getElementById,
-getElementByClassName, tagName.
+2) "this" Alone:
+            When used alone, "this" refers to the global object. Because "this" is running in the global scope.
+let x = this;
+In strict mode, when used alone, "this" refers to the global object.
+"use strict"
+let x = this;
 
-querySelector():- Use the querySelector to target only one specific element.
-querySelectorAll():- Use the querySelectorAll to target multiple elements. */
+3) "this" in a Function (Default):
+                  In a function, the global object is the default binding for "this". In a browser window the global 
+object is [object Window]:
+function myFunction() {
+      return this;
+}
 
-// Target class element by using (.):
-const allClass = document.querySelectorAll(".text");
-console.log(allClass);
-/* NodeList(3) [h1#heading.text, h1#heading1.text, h2#heading2.text]
-   0: h1#heading.text
-   1: h1#heading1.text
-   2: h2#heading2.text */
+4) "this" in a Function (strict):
+                  JavaScript strict mode does not allow default binding, When used in a function, in strict mode, 
+this is undefined.
+"use strict"
+function myFunction() {
+      return this;
+}
 
-// Target id element by using (#):
-const allId = document.querySelectorAll("#heading1");
-console.log(allId);
-/* NodeList [h1#heading1.text]
-   0: h1#heading1.text */
-
-// Target element by tag name:
-const allTag = document.querySelectorAll("h1");
-console.log(allTag);
-/* NodeList(2) [h1#heading.text, h1#heading1.text]
-   0: h1#heading.text
-   1: h1#heading1.text */
-
-// Elements Properties and Methods.
-/* HTML elements have different attributes assigned to them like id, class, or types.
-They are standard attribute for different elements.
-Some attributes are applicable to all elements, and some are applicable to particular ones.
-for eg.:- ID or CLASS are applicable for all elements. TYPE property is applicable to input
-          elements and buttons only. */
-
-// Elements Properties
-const element = document.querySelector("#heading3");
-console.log(element); //<h3 id="heading3" class="text abc text">TEST</h3>
-
-// element.classList: Use classList to get access to all the class.
-const cl = element.classList;
-console.log(cl);
-/* DOMTokenList(3) ['text', 'abc', 'test', value: 'text abc test']
-   0: "text"
-   1: "abc"
-   2: "test" */
-
-// element.id: Get id of the element.
-const id = element.id;
-console.log(id); //heading3
-
-// element.innerHTML: Get the inner text of that element.
-const text = element.innerHTML;
-console.log(text); //TEST
-
-// Methods
-
-// Target the button
-const btn = document.querySelector("button");
-console.log(btn); //button
-
-const addEvent = btn.addEventListener("click", () => {
-  alert("CLICKED");
-});
-console.log(addEvent);
-
-const info = btn.getBoundingClientRect();
-// This returns a information of button.
-console.log(info); //DOMRect {x: 8, y: 127.84375, width: 57.5, height: 21, top: 127.84375, …}
-
-const attr = btn.hasAttribute("type");
-// Ith checks element has an attribute type or not.
-console.log(attr); //true
-
-const removeAttr = btn.removeAttribute("type");
-// It removes the attribute.
-console.log(removeAttr);
-// Check the hasAttribute is removed or not.
-console.log(btn.hasAttribute("type")); //false
-
-// Working with Classes
-// Use menu.html
-/* Classes are used to style element, by using JavaScript to do something to 
-elements with certainn class. */
-
-const menuClicked = (currEl) => {
-  // Target class by using className
-  const menuItems = document.getElementsByClassName("menu-item");
-
-  // Remove active class.
-  for (let i = 0; i < menuItems.length; i++) {
-    menuItems[i].classList.remove("active");
-  }
-
-  // When user click on menu list add active class.
-  currEl.classList.add("active");
+5) "this" in Event Handlers:
+                  In HTML event handlers, "this" refers to the HTML element that received the event.
+<button onclick="this.style.display = 'none'">
+      Click to Remove Me
+</button> */
+// Ex.:
+const person = {
+  firstName: "Saish",
+  lastName: "Jagtap",
+  id: 1,
+  fullName: function () {
+    return this.firstName + " " + this.lastName;
+  },
 };
 
-// Creating, Traversing and Removing Node.
-// Creating:
-/* There are different ways to create an HTML element using JavaScript.
-The most used is document.createElement() method. */
+console.log(person.fullName()); //Saish Jagtap
 
-const heading = document.createElement("h4");
-console.log(heading); //<h4></h4>
+/* "classes":
+            JavaScript classes are templates for JavaScript Objects.
+Syntax:-
+      Use the keyword class to create a class. Always add a method named constructor()
+      
+      class ClassName {
+            constructor() { ... }
+      }
+Ex.:
+      class Car {
+            constructor(name, year) {
+                  this.name = name;
+                  this.year = year;
+            }
+      }
+It creates a class named "Car". The class has two initial properties: "name" and "year".
 
-// It just create the lement but doesn't added to DOM.
-// To added to DOM use appendChild method. Add it to any element or the main body as well.
+const myCar1 = new Car('Audi', 2016);
+const myCar2 = new Car('Ford', 2020);
 
-// To target the body.
-const body = document.querySelector("body");
-console.log(body); //<body>...</body>
+Use the class to create objects. It uses the Car class to create two Car objects.
 
-// To append child in body element
-const append = body.appendChild(heading);
-console.log(append); //<body><h4></h4></body>
+▪ The Constructor Method:
+                        This is special method:-
+1) It has the exact name "constructor".
+2) It is executed automatically when a new object is created.
+3) It is used to initialize object properties.
 
-// To add text in it.
-const addText = (heading.innerText = "Hello, World!");
-console.log(addText); //Hello, World!
+If a constructor method is not define, JavaScript will add an empty constructor method.
 
-// Traverse
-// Target all subjects:
-const sub = document.querySelector(".subjects");
-console.log(sub);
-/* <ul class="subjects">
-      <li>Maths</li>
-      <li>History</li>
-      <li class="fav-sub">English</li>
-    </ul> */
+▪ The Class Method:
+                  Class methods are creeated with the same syntax as object methods.
+Use the keyword class to create a class. Always add a constructor() method. Then add any number of methods:
 
-// Target each thing specifically:
-// first element in the list:-
-const firstSub = sub.firstElementChild;
-console.log(firstSub);
-/* <li>Maths</li> */
+class ClassName {
+      constructor() {
+            method1() { ... }
+            method2() { ... }
+            method3() { ... }
+      }
+} */
+// Ex.:
+class Car {
+  constructor(name, year) {
+    this.name = name;
+    this.year = year;
+  }
+}
 
-// last element in the list:-
-const lastSub = sub.lastElementChild;
-console.log(lastSub);
-/* <li class="fav-sub">English</li> */
+const myCar = new Car("Audi", 2016);
 
-// Target to fav-subjects
-const favSub = document.querySelector(".fav-sub");
-console.log(favSub);
-/* <li class="fav-sub">English</li> */
-
-const prevSub = favSub.previousElementSibling;
-// It give us previous sibling in the list.
-console.log(prevSub);
-/* <li>History</li> */
-
-const nextSub = firstSub.nextElementSibling;
-// It give us the next one in the list.
-console.log(nextSub);
-/* <li>History</li> */
-
-// Removing
-// Remove the favourite subject.
-
-const removeFavSub = favSub.remove();
-console.log(removeFavSub);
+console.log(myCar);
+/* Car {name: 'Audi', year: 2016}
+   name: "Audi"
+   year: 2016 */

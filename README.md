@@ -1,109 +1,34 @@
-# DOM - Document Object Model
+# 'classes', 'new' and 'this' keyword
 
-## Introduction to DOM
+## The 'new' keyword:
 
-> **DOM** stands for Document Object Model. It is a standard to access and share document or website over the Internet. It represents how a particular document is structured and it also helps to modify the website.
+> The `new` keyword crreate an instance of a user-defined object type or of one of the built-in object types that has a constructor function.
 
-## Selecting Element
-
-1. By ID
-
-   > The `getElementById()` method returns an element with a specified value.
+- Syntax:
 
 ```javascript
-document.getElementById("heading");
+new constructor(arguments);
 ```
 
-2. By Tag Name
+## The 'this' keyword:
 
-   > The `getElementByTagName()` method returns a collection of all elements with a specified tag name.
+> The `this` keyword refers to an object. Which object depends on how `this` is being used or called. The `this` keyword refers to different objects depending on how it is used.
+
+1. In an **object** method, `this` refers to the **object**.
+2. In an **alone**, `this` refers to the **global object**.
+3. In a **function**, `this` refers to the **global object**.
+4. In a **function**, in **strict** mode, `this` is **undefined**.
+5. In an event, `this` refers to the **element** that received the event.
+6. Method like `call()`, `apply()`, and `bind()` -> `this` refers to **any object**.
+
+## Classes
+
+> Classes are template for creating objects. They encapsulate data with code to work on that data. Classes in JavaScript are built on prototypes but also have some syntax and semantics that are not shared with ES5 class-like semantics.
+
+- Syntax:
 
 ```javascript
-documnet.getElementsByTagName("h1");
+class ClassName {
+    constructor() { ... }
+}
 ```
-
-3. By Class Name
-
-   > The `getElementByClassName()` method returns a collection of elements with a specified class names.
-
-```javascript
-document.getElementByClassName("text");
-```
-
-4. By CSS Selectors
-
-   > The `querySelector()` method returns the first element that matches a CSS selector.
-
-   > The `querySelectorAll()` method returns all matches.
-
-```javascript
-document.querySelectorAll("h2.text");
-```
-
-## Elements Properties and Methods
-
-> It represents an HTML element like `P`, `DIV`, `A`, `TABLE`, or any other HTML element.
-
-### Elements Properties:
-
-- `classList`
-
-  > Returns the class names of an element.
-
-- `id`
-
-  > Returns the value of the id attribute of an element.
-
-- `innerHTML`
-  > Returns the content of an element.
-
-### Methods:
-
-- `addEventListener()`
-
-  > Attaches an event handler to an element.
-
-- `getBoundingClientRect()`
-
-  > Returns the size of an elements and its position relative to the viewport.
-
-- `hasAttribute()`
-
-  > Returns true, if an element has a given attribute.
-
-- `removeAttribute()`
-  > Removes an element from the DOM.
-
-## Creating, Traversing and removing node.
-
-### Creating
-
-- `createElement()`
-
-  > The `createElement()` method creates an element node.
-
-- `appendChild()`
-
-  > The `appendChild()` method appends a node (element) as the last child of an element.
-
-### Traversing
-
-- `firstElementChild`
-
-  > The `firstElementChild` property returns the first child element of the specified element.
-
-- `lastElementChild`
-
-  > The `lastElementChild` property returns the last child element of an element.
-
-- `previousElementSibling`
-
-  > The `previousElementSibling` property returns the previous element in the same tree levell.
-
-- `nextElementSibling`
-  > The `nextElementSibling` property returns the next element in the same tree level.
-
-### Removing
-
-- `remove()`
-  > The `remove()` method removes an element (or node) from the document.
