@@ -1,148 +1,199 @@
-// Classes, this and new keyword
+// Asynchronous JavaScript
 
-/* The "new" keyword:
-               The 'new' keyword create an instances of a user-defined object type or of one of the
-built-in object types that has a constructor function.
+// Intervals and Timers
 
-Syntax:- 
-      new constructor(arguments)
-◾ constructor:- A class or function that specifies the type of object instance.
-◾ arguments:- A list of values that the constructor will be called with.
+/* setInterval():
+                  The setInterval() method calls a function at specified intervals (in milliseconds). The setInterval() method
+continues calling the function until clearInterval() is called, or windows is closed. 1 second = 1000 milliseconds. */
 
-Description:-
-            The 'new' keyword does the following things:
-1) Creates a blank, plain JavaScript object.
-2) Adds a property to the new object that takes links to the constructor functions property object. */
+setInterval(() => {
+  //   console.log("Hello");
+}, 1000); //print 'hello' every second.
 
-// Ex.:
-const myDate = new Date();
-console.log(myDate); //Tue Apr 05 2022 20:35:06 GMT+0530 (India Standard Time)
-console.log(myDate.getFullYear()); //2022
+/* clearInterval():
+                  The clearInterval() method clears a timmer set with the setInterval() method. */
 
-// JavaScript also provides constructor functions for many built-in objects, like the 'Date' object.
+const myInterval = setInterval(() => console.log("Hii"), 1000);
 
-/* The "this" keyword:
-Ex.
-const person = {
-      firstName: "Saish",
-      lastName: "Jagtap",
-      id: "1",
-      fullName: function() {
-            return this.firstName + " " + this.lastName;
-      }
+clearInterval(myInterval);
+
+/* setTimeout():
+                  The setTimeout() method calls a function after a number of milliseconds.
+The setTimeout() is executed only once. */
+
+setTimeout(() => console.log("Hello"), 1000); //print 'hello' after 5 second.
+
+/* clearTimeout():
+                  The clearTimeout() method clears a timer set with the setTimeout() method. */
+
+const myTimeout = setTimeout(() => console.log("Hii"), 1000);
+
+clearTimeout(myTimeout);
+
+// Difference between Asynchronous and Synchronous
+
+/* Synchronous JavaScript:
+              Synchronous JavaScript is one in which the code is executed line by line and their tasks are completed instantly,
+i.e. there is no time delay in the completion of the tasks for those lines of code. */
+
+// Example:
+console.log("Hi");
+console.log("Saish");
+console.log("How are you ?");
+
+/* In above example, the first line of the code 'Hi' will be logged first then the second line 'Saish' will be logged and then after its completion,
+the third line would be logged 'How are you ?' 
+The codes work in a sequence. Every line of waits for its previous one to get executed first and then it gets executed. */
+
+/* Asynchronous JavaScript:
+              Asynchronous JavaScript is one in which some lines of code take time to run. These tasks are run in background while the JavaScript engine
+keeps executing other lines of code. When the result of the asynchronous takes gets available, is then used in the program. */
+
+// Example:
+console.log("Start");
+setTimeout(() => {
+  console.log("Let us see what happen ...");
+}, 2000);
+console.log("End");
+
+/* In above example, It first logs 'Start', then it logs 'End', rather than executing the setTimeout function and then it returns the setTimeout function.
+
+First the 'Start' statement got logged in. JavaScript there are the web API's that handle these things for users it passes the setTimeout function in such 
+web API and then keep on running our code as usual. It does not block the rest of the code its execution, it gets pushed to the call stack and then finally 
+gets executed */
+
+/* Callbacks:
+            The function that is passed as an argument inside of another function, is called a callback function. This technique allows a function to call 
+another function. */
+
+/* Why use Callback ?
+-> One of the biggest benefit of using Callback is, to wait for result of the previous function and then execute another function. */
+
+/* The correct time to use Callback ?
+-> The callback function is helpful when have to wait for a result that takes time. For example, the data is coming from a server since 
+it takes time for data to move. */
+
+/* Callback is great way of handling asynchronous behaviour in JavaScript. In JavaScript, everything behaves like an object so functions have the type of object
+and like any other object (strings, arrays, etc.) pass function as an argument to other function and that's the idea of callback. */
+
+// Example:
+function getUser(id, callback) {
+  //create a callback function
+  setTimeout(() => {
+    console.log("Reading user from database ...");
+    callback({ id: id, githubUsername: "SaishJ" }); //instead of returning user, call the callback function.
+  });
 }
-What is this ?
-The "this" keyword refers to an object. Which object depends on how 'this' is being used or called (invoked).
-The 'this' keyword refers to different objects depending on how it is used.
 
-▪ In an object method, "this" refers to the object.
-▪ Alone, "this" refers to the global object.
-▪ In a function, "this" refers to the global object.
-▪ In a function, in strict mode, "this" is undefined.
-▪ In an event, "this" refers to the element that received the event.
-▪ Method like call(), apply(), and bind() can refer "this" to any object.
+// call the getUser function
+getUser(29, (user) => {
+  //data type of callback is function. Create an arrow function (user) as second parameter
+  console.log("User", user);
+});
+// {id: 29, githubUsername: 'SaishJ'}
 
-Note:-
-      "this" is not a variable. It is keyword. The value of "this" cannot be change.
+// Callback Hell:
+/* Example:
+Fetch social media app data -> Fetch user profile, then fetch the photos, and then fetch the photo details. */
 
-1) "this" in a method:
-                  When "this" used in an object method, it refers to the object. In an above example, "this" refers
-to the person object. Because the fullName method is a method of the person object.
-fullName: function() {
-      return this.firstName + " " + this.lastName;
-}
-
-2) "this" Alone:
-            When used alone, "this" refers to the global object. Because "this" is running in the global scope.
-let x = this;
-In strict mode, when used alone, "this" refers to the global object.
-"use strict"
-let x = this;
-
-3) "this" in a Function (Default):
-                  In a function, the global object is the default binding for "this". In a browser window the global 
-object is [object Window]:
-function myFunction() {
-      return this;
-}
-
-4) "this" in a Function (strict):
-                  JavaScript strict mode does not allow default binding, When used in a function, in strict mode, 
-this is undefined.
-"use strict"
-function myFunction() {
-      return this;
-}
-
-5) "this" in Event Handlers:
-                  In HTML event handlers, "this" refers to the HTML element that received the event.
-<button onclick="this.style.display = 'none'">
-      Click to Remove Me
-</button> */
-// Ex.:
-const person = {
-  firstName: "Saish",
-  lastName: "Jagtap",
-  id: 1,
-  fullName: function () {
-    return this.firstName + " " + this.lastName;
-  },
+const fetchUser = (username, callback) => {
+  console.log("Reading user ...");
+  setTimeout(() => {
+    callback({ username });
+  }, 2000);
 };
 
-console.log(person.fullName()); //Saish Jagtap
+const fetUserPhotos = (username, callback) => {
+  setTimeout(() => {
+    callback(["Photo 1", "Photo 2"]);
+  }, 2000);
+};
 
-/* "classes":
-            JavaScript classes are templates for JavaScript Objects.
-Syntax:-
-      Use the keyword class to create a class. Always add a method named constructor()
-      
-      class ClassName {
-            constructor() { ... }
-      }
-Ex.:
-      class Car {
-            constructor(name, year) {
-                  this.name = name;
-                  this.year = year;
-            }
-      }
-It creates a class named "Car". The class has two initial properties: "name" and "year".
+const fetchPhotoDetails = (photo, callback) => {
+  setTimeout(() => {
+    callback("Details ...");
+  });
+};
 
-const myCar1 = new Car('Audi', 2016);
-const myCar2 = new Car('Ford', 2020);
+fetchUser("Saish", (user) => {
+  console.log(`Your name is: ${user.username}`);
+  fetUserPhotos(user.username, (userPhotos) => {
+    console.log(`Photos: ${userPhotos}`);
+    fetchPhotoDetails(userPhotos[0], (details) => {
+      console.log(`Details: ${details}`);
+    });
+  });
+});
 
-Use the class to create objects. It uses the Car class to create two Car objects.
+// In above code, a nesting of functions here and code also looks scary this is called Callback Hell.
 
-▪ The Constructor Method:
-                        This is special method:-
-1) It has the exact name "constructor".
-2) It is executed automatically when a new object is created.
-3) It is used to initialize object properties.
+/* Promises:
+            Promises are objects that either return the successfully fethed data, or the error.
+Promises are alternative to callbacks for delivering the result of asynchronous computation. They are 
+more readable as compared to callbacks */
 
-If a constructor method is not define, JavaScript will add an empty constructor method.
+/* Promise Object Properties:
+1) Pending = Hasn't fulfilled or rejected yet.
+2) Fulfilled = The action relating to the promise succeeded.
+3) Rejected = The action relating to the promise failed. */
 
-▪ The Class Method:
-                  Class methods are creeated with the same syntax as object methods.
-Use the keyword class to create a class. Always add a constructor() method. Then add any number of methods:
+// Example:
+// Creating Promise
 
-class ClassName {
-      constructor() {
-            method1() { ... }
-            method2() { ... }
-            method3() { ... }
-      }
-} */
-// Ex.:
-class Car {
-  constructor(name, year) {
-    this.name = name;
-    this.year = year;
-  }
+function getUserid(id) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      console.log("Reading from database ...");
+      resolve({ id: id, githubUsername: "SaishJ" });
+    }, 2000);
+  });
 }
 
-const myCar = new Car("Audi", 2016);
+function getRepositories(username) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      console.log(`Extracting repositories from ${username}`);
+      resolve(["repo1", "repo2", "repo3"]);
+    }, 2000);
+  });
+}
 
-console.log(myCar);
-/* Car {name: 'Audi', year: 2016}
-   name: "Audi"
-   year: 2016 */
+function getCommits(repo) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      console.log("Extracting commits for " + repo + "...");
+      resolve("commits...");
+    }, 2000);
+  });
+}
+/* Created 3 function, instead of passing callback function, returning a Promise which has 
+2 arguments resolve and reject. If everything worked, call resolve otherwise call reject. */
+
+// Call Promise
+getUserid(1)
+  .then((user) => getRepositories(user.githubUsername))
+  .then((repos) => getCommits(repos[1]))
+  .then((commits) => console.log("Commits", commits))
+  .catch((err) => console.log("Error: ", err.message));
+/* Reading from database ...
+   Extracting repositories from SaishJ
+   Extracting commits for repo2...
+   Commits commits... */
+
+/* Async/Await:
+            Async makes a function return a promise.
+            Await makes a function wait for a promise.
+            The better way to write promises and it helps to keep code simple and clean.
+In Async/Await, write the word 'async' before any regular function and it becomes a promise. 
+In other words 'async/await' is a syntactical sugar of using promises it means, to avoid 
+chaining of 'then()' methods in promises, use the 'async/await' approach but internally 
+it also uses the chaining. */
+
+const displayData = async () => {
+  const user = await getUserid(7);
+  const repos = await getRepositories(user.githubUsername);
+  const commits = await getCommits(repos[2]);
+  console.log(commits);
+};
+
+displayData();

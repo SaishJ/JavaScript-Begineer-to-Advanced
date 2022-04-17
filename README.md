@@ -1,34 +1,45 @@
-# 'classes', 'new' and 'this' keyword
+# Asynchronous JavaScript
 
-## The 'new' keyword:
+## Intervals and Timers
 
-> The `new` keyword crreate an instance of a user-defined object type or of one of the built-in object types that has a constructor function.
+### setInterval()
 
-- Syntax:
+> The `setInterval()` method calls a function at specified intervals (in millisecond). The `setInterval()` method continues calling the function until the `clearInterval()` is called, or the window is closed.
 
-```javascript
-new constructor(arguments);
-```
+### clearInterval()
 
-## The 'this' keyword:
+> The `clearInterval()` method clears a timer set with the `setInterval()` method.
 
-> The `this` keyword refers to an object. Which object depends on how `this` is being used or called. The `this` keyword refers to different objects depending on how it is used.
+### setTimeout()
 
-1. In an **object** method, `this` refers to the **object**.
-2. In an **alone**, `this` refers to the **global object**.
-3. In a **function**, `this` refers to the **global object**.
-4. In a **function**, in **strict** mode, `this` is **undefined**.
-5. In an event, `this` refers to the **element** that received the event.
-6. Method like `call()`, `apply()`, and `bind()` -> `this` refers to **any object**.
+> The `setTimeout()` method calls a function after a number of milliseconds. The `setTimeout()` a executed only once.
 
-## Classes
+### clearTimeout()
 
-> Classes are template for creating objects. They encapsulate data with code to work on that data. Classes in JavaScript are built on prototypes but also have some syntax and semantics that are not shared with ES5 class-like semantics.
+> The `clearTimeout()` method clears a timer set with the `setTimeout()` method.
 
-- Syntax:
+## Difference between Asynchronous and Synchronous
 
-```javascript
-class ClassName {
-    constructor() { ... }
-}
-```
+### Synchronous JavaScript
+
+> Synchronous JavaScript is one in which the code is executed line by line and their tasks are completed instantly, i.e. there is no time delay in the completion of the tasks for those lines of code.
+
+### Asynchronous JavaScript
+
+> Asynchronous JavaScript is one in which some lines of code take time to run. These tasks are run in the background while the JavaScript engine keeps executing other lines of code. When the result of the asynchronous tasks gets available, is then used in the program.
+
+## Callbacks
+
+> A **Callback** is a function that is to be executed after _another function_ has _finished executing_. Any function that is passed as an _argument_ is called a **Callback** function.
+
+## Callback Helll
+
+> This is a big issued caused by coding with complex nested callbacks. Here, each and every callback takes an argument that is a result of the previous callbacks. The code structure looks like a pyramid, making it difficult to read and maintain. Also, if there is an error in one function, then all other function get affected.
+
+## Promises
+
+> Promises are objects that either return the successfully fetched data, or the error. **Promises** are alternative to callbacks for delivering the result of asynchronous computation. They are more readable as compared to **Callbacks**.
+
+## Async/Await
+
+> The keyword **async** is used to make a function asynchronous. The **await** keyword will ask the execution to wait until the defined task gets executed. It allows the use of **await** keyword inside the functions with **async** keyword.
