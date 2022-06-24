@@ -1,45 +1,81 @@
-# Asynchronous JavaScript
+# ES6
 
-## Intervals and Timers
+## Classes:
 
-### setInterval()
+> A Classes is a type of function, but instead of using the keyword `function` to initial it, use the keyword `class`, and the properties are assigned inside a `constructor()` method.
 
-> The `setInterval()` method calls a function at specified intervals (in millisecond). The `setInterval()` method continues calling the function until the `clearInterval()` is called, or the window is closed.
+## Arrow function:
 
-### clearInterval()
+> Arrow functions allows to write shorter function syntax.
 
-> The `clearInterval()` method clears a timer set with the `setInterval()` method.
+## Variables:
 
-### setTimeout()
+1. `var Keyword:`
 
-> The `setTimeout()` method calls a function after a number of milliseconds. The `setTimeout()` a executed only once.
+   > Use `var` outside of a function, it belongs to the global scope. Use `var` inside of a function, it belongs to that function. Use var insside of a block, i.e. a for loop, the variables is still available outside of that block. `var` is a Global or Functional scope.
 
-### clearTimeout()
+2. `let keyword:`
 
-> The `clearTimeout()` method clears a timer set with the `setTimeout()` method.
+   > `let` is the block scoped version of `var`, and is limited to the block where it is defined. Use `let` inside of a block, i.e. a for loop, the variable is only available inside of thet loop. `let` is a Block scope.
 
-## Difference between Asynchronous and Synchronous
+3. `const keyword:`
+   > `const` is a variable that once it has been created, its value can never change. `const` is a Block scope.
 
-### Synchronous JavaScript
+## Array Methods:
 
-> Synchronous JavaScript is one in which the code is executed line by line and their tasks are completed instantly, i.e. there is no time delay in the completion of the tasks for those lines of code.
+> There are many JavaScript Array methods. One of the most useful in React is the `.map()` array method. The `.map()` method allows to run a function on each item in the array, returning a new array as the result. In React, `map()` can be used to generate lists.
 
-### Asynchronous JavaScript
+## Modules:
 
-> Asynchronous JavaScript is one in which some lines of code take time to run. These tasks are run in the background while the JavaScript engine keeps executing other lines of code. When the result of the asynchronous tasks gets available, is then used in the program.
+> JavaScript modules allows to break up code into seprate files. This makes it easier to mantain the code-base. ES Modules rely on the import and export statements.
 
-## Callbacks
+- Export:
 
-> A **Callback** is a function that is to be executed after _another function_ has _finished executing_. Any function that is passed as an _argument_ is called a **Callback** function.
+  > Export a function or variable from any file. There are two types of exports: Named and Default.
 
-## Callback Helll
+  > Named Exports:- Create named exports two ways. In-line individually, or all at once at the bottom.
 
-> This is a big issued caused by coding with complex nested callbacks. Here, each and every callback takes an argument that is a result of the previous callbacks. The code structure looks like a pyramid, making it difficult to read and maintain. Also, if there is an error in one function, then all other function get affected.
+  ```javascript
+  // Individually:
+  export const name = "Saish";
+  ```
 
-## Promises
+  ```javascript
+  // All at once at the bottom:
+  const name1 = "Pratik";
+  const age1 = 22;
 
-> Promises are objects that either return the successfully fetched data, or the error. **Promises** are alternative to callbacks for delivering the result of asynchronous computation. They are more readable as compared to **Callbacks**.
+  export { name1, age1 };
+  ```
 
-## Async/Await
+  > Default Exports:- Only one default export in file.
 
-> The keyword **async** is used to make a function asynchronous. The **await** keyword will ask the execution to wait until the defined task gets executed. It allows the use of **await** keyword inside the functions with **async** keyword.
+  ```javascript
+  const message = () => {
+    const name2 = "Prafulla";
+    const age2 = 22;
+    return name2 + " is " + age2 + "years old.";
+  };
+
+  export default message;
+  ```
+
+- Import:
+
+  > Import modules into a file in two ways, based on if they are named exports or default exports. Named exports must be destructured using curly braces. Default exports do not.
+
+  > Import from Named Exports:-
+
+  ```javascript
+  import { name, age } from "./export";
+
+  console.log("My name is " + name + "." + "I am " + age + "years old.");
+  ```
+
+  > Import from Default Exports:-
+
+  ```javascript
+  import message from "./export";
+
+  console.log(message());
+  ```

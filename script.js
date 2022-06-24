@@ -1,199 +1,238 @@
-// Asynchronous JavaScript
+// ES6
 
-// Intervals and Timers
+/* Classes:
+      A Classes is a type of function, but instead of using the keyword function
+to initial it, use the keyword class, and the properties are assigned inside a 
+constructor() method. */
 
-/* setInterval():
-                  The setInterval() method calls a function at specified intervals (in milliseconds). The setInterval() method
-continues calling the function until clearInterval() is called, or windows is closed. 1 second = 1000 milliseconds. */
-
-setInterval(() => {
-  //   console.log("Hello");
-}, 1000); //print 'hello' every second.
-
-/* clearInterval():
-                  The clearInterval() method clears a timmer set with the setInterval() method. */
-
-const myInterval = setInterval(() => console.log("Hii"), 1000);
-
-clearInterval(myInterval);
-
-/* setTimeout():
-                  The setTimeout() method calls a function after a number of milliseconds.
-The setTimeout() is executed only once. */
-
-setTimeout(() => console.log("Hello"), 1000); //print 'hello' after 5 second.
-
-/* clearTimeout():
-                  The clearTimeout() method clears a timer set with the setTimeout() method. */
-
-const myTimeout = setTimeout(() => console.log("Hii"), 1000);
-
-clearTimeout(myTimeout);
-
-// Difference between Asynchronous and Synchronous
-
-/* Synchronous JavaScript:
-              Synchronous JavaScript is one in which the code is executed line by line and their tasks are completed instantly,
-i.e. there is no time delay in the completion of the tasks for those lines of code. */
-
-// Example:
-console.log("Hi");
-console.log("Saish");
-console.log("How are you ?");
-
-/* In above example, the first line of the code 'Hi' will be logged first then the second line 'Saish' will be logged and then after its completion,
-the third line would be logged 'How are you ?' 
-The codes work in a sequence. Every line of waits for its previous one to get executed first and then it gets executed. */
-
-/* Asynchronous JavaScript:
-              Asynchronous JavaScript is one in which some lines of code take time to run. These tasks are run in background while the JavaScript engine
-keeps executing other lines of code. When the result of the asynchronous takes gets available, is then used in the program. */
-
-// Example:
-console.log("Start");
-setTimeout(() => {
-  console.log("Let us see what happen ...");
-}, 2000);
-console.log("End");
-
-/* In above example, It first logs 'Start', then it logs 'End', rather than executing the setTimeout function and then it returns the setTimeout function.
-
-First the 'Start' statement got logged in. JavaScript there are the web API's that handle these things for users it passes the setTimeout function in such 
-web API and then keep on running our code as usual. It does not block the rest of the code its execution, it gets pushed to the call stack and then finally 
-gets executed */
-
-/* Callbacks:
-            The function that is passed as an argument inside of another function, is called a callback function. This technique allows a function to call 
-another function. */
-
-/* Why use Callback ?
--> One of the biggest benefit of using Callback is, to wait for result of the previous function and then execute another function. */
-
-/* The correct time to use Callback ?
--> The callback function is helpful when have to wait for a result that takes time. For example, the data is coming from a server since 
-it takes time for data to move. */
-
-/* Callback is great way of handling asynchronous behaviour in JavaScript. In JavaScript, everything behaves like an object so functions have the type of object
-and like any other object (strings, arrays, etc.) pass function as an argument to other function and that's the idea of callback. */
-
-// Example:
-function getUser(id, callback) {
-  //create a callback function
-  setTimeout(() => {
-    console.log("Reading user from database ...");
-    callback({ id: id, githubUsername: "SaishJ" }); //instead of returning user, call the callback function.
-  });
+// Example 1:
+class Car {
+  constructor(name) {
+    this.brand = name;
+  }
 }
 
-// call the getUser function
-getUser(29, (user) => {
-  //data type of callback is function. Create an arrow function (user) as second parameter
-  console.log("User", user);
-});
-// {id: 29, githubUsername: 'SaishJ'}
+const myCar = new Car("BMW");
 
-// Callback Hell:
-/* Example:
-Fetch social media app data -> Fetch user profile, then fetch the photos, and then fetch the photo details. */
+console.log(myCar); //Car {brand: 'BMW'}
 
-const fetchUser = (username, callback) => {
-  console.log("Reading user ...");
-  setTimeout(() => {
-    callback({ username });
-  }, 2000);
-};
+// Example 2:
+class Car1 {
+  constructor(name) {
+    this.brand = name;
+  }
 
-const fetUserPhotos = (username, callback) => {
-  setTimeout(() => {
-    callback(["Photo 1", "Photo 2"]);
-  }, 2000);
-};
-
-const fetchPhotoDetails = (photo, callback) => {
-  setTimeout(() => {
-    callback("Details ...");
-  });
-};
-
-fetchUser("Saish", (user) => {
-  console.log(`Your name is: ${user.username}`);
-  fetUserPhotos(user.username, (userPhotos) => {
-    console.log(`Photos: ${userPhotos}`);
-    fetchPhotoDetails(userPhotos[0], (details) => {
-      console.log(`Details: ${details}`);
-    });
-  });
-});
-
-// In above code, a nesting of functions here and code also looks scary this is called Callback Hell.
-
-/* Promises:
-            Promises are objects that either return the successfully fethed data, or the error.
-Promises are alternative to callbacks for delivering the result of asynchronous computation. They are 
-more readable as compared to callbacks */
-
-/* Promise Object Properties:
-1) Pending = Hasn't fulfilled or rejected yet.
-2) Fulfilled = The action relating to the promise succeeded.
-3) Rejected = The action relating to the promise failed. */
-
-// Example:
-// Creating Promise
-
-function getUserid(id) {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      console.log("Reading from database ...");
-      resolve({ id: id, githubUsername: "SaishJ" });
-    }, 2000);
-  });
+  present() {
+    return "I have a " + this.brand;
+  }
 }
 
-function getRepositories(username) {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      console.log(`Extracting repositories from ${username}`);
-      resolve(["repo1", "repo2", "repo3"]);
-    }, 2000);
-  });
-}
+const myCar1 = new Car1("Ford");
+console.log(myCar1.present()); //I have a Ford
 
-function getCommits(repo) {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      console.log("Extracting commits for " + repo + "...");
-      resolve("commits...");
-    }, 2000);
-  });
-}
-/* Created 3 function, instead of passing callback function, returning a Promise which has 
-2 arguments resolve and reject. If everything worked, call resolve otherwise call reject. */
+/* Arrow Functions:
+        Arrow functions allows to write shorter function syntax. */
 
-// Call Promise
-getUserid(1)
-  .then((user) => getRepositories(user.githubUsername))
-  .then((repos) => getCommits(repos[1]))
-  .then((commits) => console.log("Commits", commits))
-  .catch((err) => console.log("Error: ", err.message));
-/* Reading from database ...
-   Extracting repositories from SaishJ
-   Extracting commits for repo2...
-   Commits commits... */
-
-/* Async/Await:
-            Async makes a function return a promise.
-            Await makes a function wait for a promise.
-            The better way to write promises and it helps to keep code simple and clean.
-In Async/Await, write the word 'async' before any regular function and it becomes a promise. 
-In other words 'async/await' is a syntactical sugar of using promises it means, to avoid 
-chaining of 'then()' methods in promises, use the 'async/await' approach but internally 
-it also uses the chaining. */
-
-const displayData = async () => {
-  const user = await getUserid(7);
-  const repos = await getRepositories(user.githubUsername);
-  const commits = await getCommits(repos[2]);
-  console.log(commits);
+// Without Arrow function
+hello = function () {
+  return "Hello World!";
 };
 
-displayData();
+console.log(hello);
+
+// With Arrow function
+hey = () => {
+  return "Say Hi";
+};
+
+console.log(hey);
+
+/* It gets shorter. If the function has only one statement, and 
+the statement returns a value, you can remove the brackets and 
+the return keyword. */
+
+firstName = () => "Saish";
+console.log(firstName);
+
+// Arrow function with Parameter
+lastName = (val) => "Saish " + val;
+console.log(lastName("Jagtap"));
+
+/* Variables (Var, Let, Const):
+        Before ES6 there was only one way of defining variables: 
+with the var keyword. If the variable did not define them, they would
+be assigned to the global object. Unless in strict mode, then would
+get an error if variables were undefined.
+
+Now, with ES6, there are three ways of defining variables: var, let, const. */
+
+// 1) var:
+for (var i = 1; i <= 5; i++) {
+  console.log("Inside the loop: " + i);
+}
+console.log("Outside the loop:" + i);
+
+/* If var use outside of a function, it belongs to the global scope.
+If var use inside of a function, it belongs to that function.
+If var use inside of a block, i.e. a for loop, the variables is still available
+outside of the block. */
+
+// 2) let:
+for (let j = 1; j <= 5; j++) {
+  console.log("Inside the loop: " + j);
+}
+// console.log("Outside the loop: " + j);
+/* let is the block scoped vaersion of var, and is limited to the block where it
+is defined.
+If let use inside of a block, i.e. a for loop, the variable is only available 
+inside of that loop. */
+
+// 3) const:
+const x = 5.6;
+// x = 5; //Uncaught TypeError: Assignment to constant variable.
+
+console.log(x);
+/* const is a variable that once it has been created, its value can never change.
+It does not define a constant value. It defines a constant reference to a value.
+const variable cannot:
+  1) Reassign a constant value,
+  2) Reassign a constant array,
+  3) Reassign a constant object. 
+const variable can:
+  1) Change the element of constant array,
+  2) Change the properties of constant */
+
+/* Array Methods:
+        There are many JavaScript Array methods. One of the most useful in React is
+the .map() array method.
+The .map() method allows to run a function on each item in the array, returning a new
+array as the result.
+In React, map() can be used to generate lists. */
+const myArr = ["HTML", "CSS", "JS", "React"];
+const myList = myArr.map((item) => console.log(item));
+
+/* Destructuring:
+        We have an Array or Object that we are working with, but we only need some of
+the items contained in these. Destructuring makes it easy to extract only what is needed. */
+
+// ◾ Destructuring Array:
+// Before Destructuring:-
+const vehicles = ["mustang", "f-150", "expedition"];
+const car = vehicles[0];
+const suv = vehicles[2];
+
+console.log(car, suv); //mustang expedition
+// With Destructuring:-
+const names = ["Saish", "Shivam", "Pratik", "Mayuresh"];
+const [name1, name2, name3, name4] = names;
+
+console.log(name1); //Saish
+
+// ◾ Destructuring Function:
+function calculate(a, b) {
+  const add = a + b;
+  const sub = a - b;
+  const mul = a * b;
+  const div = a / b;
+
+  return [add, sub, mul, div];
+}
+
+const [add, sub, mul, div] = calculate(4, 6);
+
+console.log(add); //10
+console.log(mul); //24
+
+// Destructuring Objects:
+// Before Destructuring:-
+const vehicleOne = {
+  brand: "Ford",
+  model: "Mustang",
+  type: "car",
+  year: 2022,
+  color: "red",
+};
+
+myVehicle(vehicleOne);
+// old way
+function myVehicle(vehicle) {
+  const message =
+    "My " +
+    vehicle.type +
+    " is a " +
+    vehicle.color +
+    " " +
+    vehicle.brand +
+    " " +
+    vehicle.model +
+    ".";
+
+  console.log(message); //My car is a red Ford Mustang.
+}
+
+// With Destructuring:-
+const user = {
+  name: "Saish",
+  age: "21",
+};
+
+userDetail(user);
+
+function userDetail({ name, age }) {
+  const userName = "My name is " + name + ".";
+
+  console.log(userName); //My name is Saish.
+}
+
+/* Modules:
+        JavaScript modules allows to break up code into seprate files. This makes it
+easier to mantain the code-base. ES Modules rely on the import and export statements. */
+
+/* Export:
+        Export a function or variable from any file.
+Example:- Create a file named person.js
+There are two types of exports: Named and Default. */
+
+/* Import:
+        Import modules into a file in two ways, based on if they are named exports or 
+default exports. Named exports must be destructured using curly braces. 
+Default exports do not. */
+
+/* Spread Operator:
+        The JavaScript Spread Operator (...) allows to quickly copy all or part of an
+existing array or object into another array or object. */
+const numberOne = [1, 2, 3];
+const numberTwo = [4, 5, 6];
+const numbersCombined = [...numberOne, ...numberTwo];
+
+console.log(numbersCombined); //[1, 2, 3, 4, 5, 6]
+
+/* The Spread Operator is often used in combination with dstructuring.
+Example:- Assign the first and second items from numbers to variables and put the rest
+in an array. */
+const numbers = [1, 2, 3, 4, 5, 6];
+
+const [one, two, ...rest] = numbers;
+console.log(one); //1
+console.log(two); //2
+console.log(rest); //[3, 4, 5, 6]
+
+// Also use the Spread Operator with objects:
+const book1 = {
+  name: "DBMS",
+  author: "SJ",
+  price: 200,
+};
+
+const book2 = {
+  name: "JavaScript",
+  author: "Adrian",
+};
+
+const books = { ...book1, ...book2 };
+
+console.log(books);
+
+/* The properties that did not match were combined, but the property that did match, 
+like author, was overwritten by the last object that was passed, book2. The resulting 
+author is now 'Adrian'. */
