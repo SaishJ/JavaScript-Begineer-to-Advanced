@@ -1,4 +1,4 @@
-# ES6
+# Modern JavaScript ES6
 
 ## Classes:
 
@@ -79,3 +79,7 @@
 
   console.log(message());
   ```
+
+## Spread Operator
+
+> The JavaScript Spread Operator (...) allows to quickly copy all or part of an existing array or object into another array or object.
